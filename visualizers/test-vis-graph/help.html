@@ -343,16 +343,16 @@
     <p>
       The following tables present the predicates supported by the visualization.<br>
       Options in <i>italics</i> are the default values.<br>
-      An <strong>identifier</strong> has to be either an atom, a string, or an integer.
+      An <strong>identifier</strong> has to be either a standard term, a string, or an integer.
       The indentifier has to be unique and non-changing (identifier can't change between answer sets).
     </p>
     <p>
       The visualizer module does some type conversions from ASP atoms to JavaScript.
       The visualizer uses the following mapping:
       <ul>
-        <li>Atoms <code>true</code> and <code>false</code> are mapped to <em>Boolean</em></li>
-        <li>Atom <code>null</code> is mapped to <em>null</em>, used for resetting values</li>
-        <li>Rest of the atoms are mapped to <em>String</em>, e.g. <code>fooBar</code></li>
+        <li>Standard terms <code>true</code> and <code>false</code> are mapped to <em>Boolean</em></li>
+        <li>Standard term <code>null</code> is mapped to <em>null</em>, used for resetting values</li>
+        <li>Rest of the standard terms are mapped to <em>String</em>, e.g. <code>fooBar</code></li>
         <li>
           ASP strings that look like decimals <code>"-0.66"</code> are mapped to <em>Number</em><br>
           > The regular expression used to match decimals is <code>-?[0-9]+\.[0-9]+</code>
@@ -1420,7 +1420,7 @@ var options: {
           </tr>
           <tr>
             <td class="nowrap">hierarchical, sortMethod</td>
-            <td>Atom</td>
+            <td>Standard term</td>
             <td>hubsize</td>
             <td>
               The algorithm used to ascertain the levels of the nodes based on the data. The possible options are: hubsize, directed.
