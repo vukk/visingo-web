@@ -231,7 +231,7 @@ TODO: additional settings dialog, follow node network.focus(NodeID, {scale: 0.5,
         this._toolbarControlsElement = elem;
         // enable auto-zoom setting in toolbar
         tb.showAutoZoom = true;
-        // bind to autozoom
+        // bind to auto zoom
         tb.addEventListener('auto-zoom-changed', function(evt) {
           this._autoZoom = evt.target.autoZoom;
         }.bind(this));
@@ -244,7 +244,7 @@ TODO: additional settings dialog, follow node network.focus(NodeID, {scale: 0.5,
         this.async(function() {
           // wait until _visScript is loaded
           if(typeof this._visScript === 'undefined') {
-            this.waitLoad();
+            this.waitForLoad();
             console.log('Waiting for _visScript...');
             return;
           }
@@ -255,8 +255,6 @@ TODO: additional settings dialog, follow node network.focus(NodeID, {scale: 0.5,
 
       launch: function() {
         this._visScript.initialize(this.$.visjsCanvasContainer, this.input.settings);
-        // TODO: remove window.vs which is here for development convenience
-        window.vs = this._visScript;
 
         window.visingo = window.visingo || {};
         window.visingo.debug = window.visingo.debug || {};
@@ -276,30 +274,40 @@ TODO: additional settings dialog, follow node network.focus(NodeID, {scale: 0.5,
           complete: this.playbackTick.bind(this)
           })
         );
-        //console.log(this.input);
-        // TODO take into account multiple solve calls
-        this._playbackState.data = this.input.inputFiles[0].data.Call[0].Witnesses;
+
+        allData = [];
+        // Get playback data over multiple solve calls, reading from JSON
+        var numCalls = this.input.inputFiles[0].data.Call.length;
+        for(var i = 0; i < numCalls; i++) {
+          var arr = this.input.inputFiles[0].data.Call[i].Witnesses;
+          for (var i = 0, len = arr.length; i < len; ++i) {
+            allData.push(arr[i]);
+          };
+        }
+        this._playbackState.data = allData;
+
+
         this.set('_playbackState.current', 0);
         //console.log(this._playbackState.data);
 
         // load first answer set immediately
-        // if no anwer sets are present, playbackTick should handle it nicely
+        // if no answer sets are present, playbackTick should handle it nicely
         this.playbackTick();
       },
 
       playbackTick: function() {
-        // put first answerset to screen
+        // put first answer set to screen
         if(this.playbackNext(false)) {
-          // then start a clock if there are more answersets
+          // then start a clock if there are more answer sets
           this._timer.reset();
           this._timer.start(this._timerInterval);
         }
       },
 
-      // displays the next answerset
-      // returns boolean, whether there are more answersets to display after this one
+      // displays the next answer set
+      // returns boolean, whether there are more answer sets to display after this one
       playbackNext: function(noFlash) {
-        // make sure there is a next answerset to display
+        // make sure there is a next answer set to display
         if(this._playbackState.current >= this._playbackState.data.length)
           return false;
 
@@ -307,7 +315,7 @@ TODO: additional settings dialog, follow node network.focus(NodeID, {scale: 0.5,
             this._playbackState.data[this._playbackState.current].Value
         );
 
-        // increment answerset number
+        // increment answer set number
         this.set('_playbackState.current', this._playbackState.current + 1);
         console.log('new playbackState.current', this._playbackState.current);
 
@@ -320,14 +328,14 @@ TODO: additional settings dialog, follow node network.focus(NodeID, {scale: 0.5,
         }
 
         // if in the end TODO: make based on length?
-        // if there are no more answersets to display, return false
+        // if there are no more answer sets to display, return false
         //if(typeof this._playbackState.data[this._playbackState.current + 1] === 'undefined')
         //  return false;
-        // if there are no more answersets to display after this one, return false
+        // if there are no more answer sets to display after this one, return false
         if(this._playbackState.current >= this._playbackState.data.length)
           return false;
 
-        // there are still answersets to display, so return true
+        // there are still answer sets to display, so return true
         return true;
       },
 
