@@ -36,7 +36,7 @@ start
   { return implemented; }
 
 anyline
-  = [^\n]*
+  = [^\r\n]*
 
 anylinenl
   = anyline Nl
@@ -81,7 +81,7 @@ inputline
 /* result */
 
 resultline
-  = result:result "\n\n" { return result; }
+  = result:result Nl Nl { return result; }
 
 result
   = "SATISFIABLE" / "UNSATISFIABLE" / "UNKNOWN" / "OPTIMUM FOUND"
@@ -143,7 +143,7 @@ call
   = solvingtextnl models:(model*) { return { Witnesses: models }; }
 
 solvingtextnl "Solving..."
-  = "Solving...\n"
+  = "Solving..." Nl
 
 /* single model */
 
