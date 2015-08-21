@@ -11,6 +11,7 @@
     app.visualizers = [];
     app.inputFiles = []; // NOTE: array
     app.parseStatus = 'outdated';
+    app.logType = 'claspLog';
 
     // Listen for template bound event to know when bindings
     // have resolved and content has been stamped to the page

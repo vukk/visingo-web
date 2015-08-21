@@ -15,19 +15,57 @@ TODO: make a general "do" button, four colors: outdated, done, error, warning
 -->
 
 <dom-module id="visingo-parse-button">
+  <style type="text/css">
+    .hidden {
+      display: none;
+    }
+
+    #buttonArea {
+      text-align: center;
+      padding: 1em;
+    }
+
+    #fileList {
+      padding-bottom: 0.5em;
+    }
+
+    #fileListText {
+      text-align: center;
+      margin-top: 0.5em;
+    }
+
+    paper-icon-item {
+      margin: 1em;
+    }
+  </style>
   <template>
-    <paper-button on-tap="parse" raised>
+    <paper-material id="buttonArea" elevation="1">
+      <paper-button id="btnParse" on-tap="parse" raised>
+        <iron-icon icon="autorenew"></iron-icon>
+        Parse
+      </paper-button>
+    </paper-material>
+    <!--paper-button on-tap="parse" raised>
       <iron-icon icon="autorenew"></iron-icon>
       Parse
-    </paper-button>
-    <div>
+    </paper-button-->
+    <paper-material id="fileList" elevation="1">
+      <div id="fileListText">Parsed files</div>
+      <template is="dom-repeat" items="[[parsed]]">
+        <paper-icon-item class="layout horizontal">
+          <div class="flex">[[item.name]]</div>
+          <iron-icon icon="cancel" title="Remove" on-click="_remove"></iron-icon>
+        </paper-icon-item>
+      </template>
+    </paper-material>
+    <!--div>
       Parsed:
       <ul>
       <template is="dom-repeat" items="{{parsed}}">
         <li><span>{{item.name}}</span></li>
       </template>
       </ul>
-    </div>
+    </div-->
   </template>
 
 </dom-module>
@@ -36,6 +74,8 @@ TODO: make a general "do" button, four colors: outdated, done, error, warning
   (function() {
     Polymer({
       is: 'visingo-parse-button',
+
+      // TODO: fix status
 
       properties: {
         files: {
@@ -54,12 +94,31 @@ TODO: make a general "do" button, four colors: outdated, done, error, warning
           value: 'outdated',
           notify: true,
           readonly: true
+        },
+        logType: {
+          type: String
         }
       },
 
       _filesChanged: function(newVal, oldVal) {
         //this.splice('parsed', 0, this.parsed.length-1);
         // TODO remove?
+      },
+
+      _remove: function(evt) {
+        this.removeByFile(evt.model.__data__.item);
+      },
+
+      removeByIndex: function(idx) {
+        this.splice('parsed', idx, 1);
+      },
+
+      removeByFile: function(file) {
+        this.removeByIndex(this.files.indexOf(file));
+      },
+
+      removeAll: function() {
+        this.set('parsed', []); // TODO: Or this.splice. Does set() fire correct events?
       },
 
       parse: function(evt) {
@@ -84,13 +143,21 @@ TODO: make a general "do" button, four colors: outdated, done, error, warning
           var reader = evt.target;
           if (reader.readyState === FileReader.DONE) {
             // js arrays extend automatically, this can be done in parallel?
+            var data;
+            if(this.logType == 'claspLog')
+              data = visingo.parsers.solverTxtToJson.parse(reader.result);
+            else if(this.logType == 'claspJSON')
+              data = JSON.parse(reader.result);
+            else
+              console.log('ERROR: unknown log type', this.logType);
+
             this.splice('parsed', idx, 1, {
               //file: file, // would be dropped on JSON.stringify
               name: file.name,
               size: file.size,
               type: file.type,
               lastModified: file.lastModified,
-              data: visingo.parsers.solverTxtToJson.parse(reader.result)
+              data: data
             });
             this._allParsedCheck();
           }
