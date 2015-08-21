@@ -330,7 +330,7 @@
         </li>
         <li>
           <em><strong>Entity attributes</strong></em>
-          define things like color and size for entities
+          define things like color and size for entities.
         </li>
         <li>
           <em><strong>General attributes</strong></em>
@@ -338,6 +338,8 @@
           but also default attributes for the entity attributes.
         </li>
       </ul>
+      <strong>NOTE:</strong> Attributes are &ldquo;sticky&rdquo;, they persist if they are not
+      changed. Setting an attribute to <em>null</em> should reset it.
     </p>
     <h2>Mapping ASP predicates to visualization</h2>
     <p>
@@ -345,6 +347,9 @@
       Options in <i>italics</i> are the default values.<br>
       An <strong>identifier</strong> has to be either a standard term, a string, or an integer.
       The indentifier has to be unique and non-changing (identifier can't change between answer sets).
+    </p>
+    <p>
+      Color attributes can typically be given
     </p>
     <p>
       The visualizer module does some type conversions from ASP atoms to JavaScript.
