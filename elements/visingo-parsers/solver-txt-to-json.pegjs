@@ -37,9 +37,9 @@ start
 
 anyline
   = [^\n]*
-  
+
 anylinenl
-  = anyline "\n"
+  = anyline Nl
 
 /* start, return json */
 
@@ -65,7 +65,7 @@ implemented
 /* solver version */
 
 solververline
-  = solver:("clingo" / "clasp") txt:" version " ver:[a-z0-9\._\-\(\)\t $:]i+ "\n"
+  = solver:("clingo" / "clasp") txt:" version " ver:[a-z0-9\._\-\(\)\t $:]i+ Nl
   { return solver + txt + ver.join(''); }
 
 /* input  */
@@ -75,7 +75,7 @@ solververline
 //       without using stat on the filesystem, and we can't really do that from
 //       the parser reliably
 inputline
-  = "Reading from " fp:filepath " ..."? "\n" { return [fp]; }
+  = "Reading from " fp:filepath " ..."? Nl { return [fp]; }
 
 
 /* result */
@@ -90,7 +90,7 @@ result
 /* meta info */
 
 modelsmeta
-  = "Models" E* ":" E* num:posinteger more:"+"? E* "\n"
+  = "Models" E* ":" E* num:posinteger more:"+"? E* Nl
     opt:metaoptimumlinenl?
     costs:metaoptimizationlinenl?
   {
@@ -105,21 +105,21 @@ modelsmeta
 
 
 metaoptimumlinenl "result optimum yes/no line"
-  = E* "Optimum" E* ":" E* opt:("yes" / "no") "\n"
+  = E* "Optimum" E* ":" E* opt:("yes" / "no") Nl
   { return opt; }
 
 metaoptimizationlinenl "models result optimization line"
-  = "Optimization" E* ":" E* first:integer rest:(" " integer)* "\n"
+  = "Optimization" E* ":" E* first:integer rest:(" " integer)* Nl
   { return buildList(first, rest, 1) }
 
 
 callsmeta "final amount of calls"
-  = "Calls" E* ":" E* num:posinteger "\n" { return num; }
+  = "Calls" E* ":" E* num:posinteger Nl { return num; }
 
 timemeta
   = "Time" E* ":" E* total:timedecimal "s" E+ "(" E* "Solving:" E+ solving:timedecimal "s" E+
-    "1st Model:" E+ model:timedecimal "s" E+ "Unsat:" E+ unsat:timedecimal "s" E* ")" "\n"
-    "CPU Time" E* ":" E* cpu:timedecimal "s" "\n"?
+    "1st Model:" E+ model:timedecimal "s" E+ "Unsat:" E+ unsat:timedecimal "s" E* ")" Nl
+    "CPU Time" E* ":" E* cpu:timedecimal "s" Nl?
   {
     return {
       Total: total,
@@ -148,7 +148,7 @@ solvingtextnl "Solving..."
 /* single model */
 
 model
-  = anl:answernumline "\n" al:answersetline "\n" ol:optimizationlinenl?
+  = anl:answernumline Nl al:answersetline Nl ol:optimizationlinenl?
   {
     var m = {};
     m['Value'] = al;
@@ -159,7 +159,7 @@ model
 /* optimization line */
 
 optimizationlinenl "answer optimization line"
-  = ol:optimizationline "\n" { return ol; }
+  = ol:optimizationline Nl { return ol; }
 
 optimizationline
   = "Optimization: " first:integer rest:(" " integer)*
@@ -190,7 +190,7 @@ predicate "predicate"
 //arguments
 //  = first:argument rest:("," S* argument)*
 //    { return buildList(first, rest, 1) }
-    
+
 arguments
   = first:argument rest:("," E* argument)*
   {
@@ -273,6 +273,9 @@ predicateIdentChar
 nonascii
   = [\x80-\uFFFF]
 
+Nl
+  = "\r"? "\n"
+
 E "tab or space"
   = [ \t]
 
@@ -283,4 +286,3 @@ S "whitespace"
 
 filepath "file path"
   = $([A-Za-z0-9\-_\.\\\/]+)
-

@@ -62,7 +62,7 @@
 
 /* start, return json */
 start
-  = terms:terms "\r"? "\n"? { return global; }
+  = terms:terms Nl? { return global; }
 
 terms
   = E* first:term? rest:(E+ term)* E*
@@ -316,6 +316,9 @@ predicateIdentChar
 
 nonascii
   = [\x80-\uFFFF]
+
+Nl
+  = "\r"? "\n"
 
 E "tab or space"
   = [ \t]
