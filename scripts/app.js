@@ -10,7 +10,8 @@
     // Listen for template bound event to know when bindings
     // have resolved and content has been stamped to the page
     app.addEventListener('dom-change', function() {
-        /* jshint ignore:start */
+      /*
+        /* jshint ignore:start /
         // TODO: this may not be the correct place to put our once-app-is-ready stuff
         if (typeof qt !== 'undefined' && typeof qt.webChannelTransport !== 'undefined') {
             app.qtConnected = true;
@@ -76,12 +77,14 @@
 
                 // One can also access enums that are marked with Q_ENUM:
                 console.log(foo.MyEnum.MyEnumerator);
-                */
+                /
             });
 
         } // end if qt defined
 
-        /* jshint ignore:end */
+        /* jshint ignore:end /
+
+        */
 
         // web-mode
         if(!app.qtConnected) {

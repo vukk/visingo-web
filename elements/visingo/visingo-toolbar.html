@@ -30,6 +30,11 @@
       margin-right: 0.5em;
     }
 
+    #newButtonDiv a, #newButtonDiv a:hover, #newButtonDiv a:visited, #newButtonDiv a:active {
+      color:inherit;
+      text-decoration: none;
+    }
+
 
 
   </style>
@@ -39,9 +44,11 @@
     <paper-toolbar>
 
     <!-- Toolbar menu -->
-    <iron-selector attr-for-selected="data-route" selected="{{route}}">
-      <paper-icon-button data-route="new" icon="av:queue"></paper-icon-button>
-    </iron-selector>
+    <div id="newButtonDiv" title="New visualization">
+      <a href="../../index.html">
+        <paper-icon-button icon="av:queue"></paper-icon-button>
+      </a>
+    </div>
 
     <div id="helpButtonDiv" title="Show help">
       <paper-icon-button icon="help" on-tap="tapHelp"></paper-icon-button>
@@ -51,9 +58,9 @@
     </div-->
 
     <!-- Indicate availability of Qt -->
-    <div id="qtAvailability" title="Qt availability">
+    <!--div id="qtAvailability" title="Qt availability">
       <paper-icon-button id="qtAvailabilityIcon" icon="settings-input-antenna" class="red" disabled></paper-icon-button>
-    </div>
+    </div-->
     <!--div class="mdl-tooltip mdl-tooltip--large" for="qtAvailability">
       Qt availability:<br>
       <span>{{qtConnectedText}}</span>
@@ -93,7 +100,7 @@
         qtConnected: {
           type: Boolean,
           value: false,
-          observer: '_qtConnectedChanged'
+          //observer: '_qtConnectedChanged'
         },
         qtConnectedText: {
           type: String,
