@@ -141,14 +141,13 @@ TODO: additional settings dialog, follow node network.focus(NodeID, {scale: 0.5,
 
       _ctlNext: function() {
         console.log('controls: next');
-        if(this._timer.go) { // NOTE: timer shouldn't be on if pointer is at end
+        if(this._timer.go) {
           this._timer.stop();
           this._timer.reset();
           this.playbackTick.bind(this)(); // TODO: is bind needed?
         }
         else {
-          if(this._playbackState.current < this._playbackState.data.length - 1)
-            this.playbackNext();
+          this.playbackNext();
         }
       },
 
