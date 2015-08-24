@@ -9,7 +9,7 @@
  * TODO: automatic zooming OUT (only) via animation http://visjs.org/examples/network/other/animationShowcase.html animation fit() (make it a setting though)
  */
 var testVisGraphVisualizer = (function (vis, _, parser) {
-	var my = {},
+    var my = {},
         network,
         context,
         container,
@@ -150,7 +150,7 @@ var testVisGraphVisualizer = (function (vis, _, parser) {
         entities.edges.remove(edgesToRem);
         entities.nodes.remove(nodesToRem);
 
-				// add
+        // add
         _.map(nodesToAdd, function(key) {
             // by default show id as label, but don't override if label set
             if(typeof parsed.nodes[key].label === 'undefined')
@@ -162,24 +162,26 @@ var testVisGraphVisualizer = (function (vis, _, parser) {
             entities.edges.add(parsed.edges[key]);
         });
 
-				// entities that stay, (nodes & edges to update)
-				var nodesToUpd = _.difference(currentEntityKeys.nodes, nodesToRem);
-				var edgesToUpd = _.difference(currentEntityKeys.edges, edgesToRem);
+        // entities that stay, (nodes & edges to update)
+        var nodesToUpd = _.difference(currentEntityKeys.nodes, nodesToRem);
+        var edgesToUpd = _.difference(currentEntityKeys.edges, edgesToRem);
 
-				/*
+        /*
         currentEntityKeys.nodes =
             _.union(nodesToAdd, _.difference(currentEntityKeys.nodes, nodesToRem));
         currentEntityKeys.edges =
             _.union(edgesToAdd, _.difference(currentEntityKeys.edges, edgesToRem));
-				*/
-				currentEntityKeys.nodes = _.union(nodesToAdd, nodesToUpd);
+        */
+        currentEntityKeys.nodes = _.union(nodesToAdd, nodesToUpd);
         currentEntityKeys.edges = _.union(edgesToAdd, edgesToUpd);
 
 
-				_.map(nodesToUpd, function(key) {
+        _.map(nodesToUpd, function(key) {
+            //console.log('nodeupdate', parsed.nodes[key]);
             entities.nodes.update(parsed.nodes[key]);
         });
         _.map(edgesToUpd, function(key) {
+            console.log('edgeupdate', parsed.edges[key]);
             entities.edges.update(parsed.edges[key]);
         });
 
@@ -218,16 +220,16 @@ var testVisGraphVisualizer = (function (vis, _, parser) {
         entities.edges.flush();
     };
 
-		my.fitNetwork = function(duration) {
-			  if(typeof duration === 'undefined')
-						duration = 3000;
+    my.fitNetwork = function(duration) {
+        if(typeof duration === 'undefined')
+            duration = 3000;
 
-				var options = {
-						duration: duration, // ms
-						easingFunction: 'easeInOutCubic'
-				};
-				network.fit({animation:options});
-		};
+        var options = {
+            duration: duration, // ms
+            easingFunction: 'easeInOutCubic'
+        };
+        network.fit({animation:options});
+    };
 
-	return my;
+  return my;
 }(vis, _, visingo.parsers.answersettermsToVisjs));
