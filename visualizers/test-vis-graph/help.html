@@ -338,8 +338,21 @@
           but also default attributes for the entity attributes.
         </li>
       </ul>
-      <strong>NOTE:</strong> Attributes are &ldquo;sticky&rdquo;, they persist if they are not
-      changed. Setting an attribute to <em>null</em> should reset it.
+      <p>
+        Entities are added and removed when they appear and disappear in answer sets.
+        For example if <code>node(1)</code> is on the first answer set, but not
+        on the second one, it will be displayed on the first answer set and removed
+        on the second one.
+      </p>
+      <p>
+        Entity attributes are &ldquo;sticky&rdquo;, they persist if they are not
+        changed, but reset if the entity they refer to is removed.
+      </p>
+      <p>
+        General attributes are also &ldquo;sticky&rdquo;, they persist if they are not
+        changed.
+      </p>
+      <strong>NOTE:</strong> Setting an attribute to <em>null</em> resets it.
     </p>
     <h2>Mapping ASP predicates to visualization</h2>
     <p>
