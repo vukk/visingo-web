@@ -136,6 +136,19 @@
     color: var(--paper-grey-700);
   }
 
+  pre {
+    background-color: white;
+    border-radius: 5px;
+  }
+
+  code {
+    padding: 2px 4px;
+    font-size: 90%;
+    color: #c7254e;
+    background-color: #f9f2f4;
+    border-radius: 4px;
+  }
+
   </style>
   <template>
     <paper-drawer-panel id="layout" responsive-width="960px">
@@ -151,8 +164,13 @@
         </paper-toolbar>
         <paper-menu class="list" attr-for-selected="data-route" selected="{{helpRoute}}">
           <a data-route="about" on-tap="tapMenu">
-            <iron-icon icon="info"></iron-icon>
+            <iron-icon icon="info-outline"></iron-icon>
             <span>About Visingo</span>
+          </a>
+
+          <a data-route="getting-started" on-tap="tapMenu">
+            <iron-icon icon="help-outline"></iron-icon>
+            <span>Getting started</span>
           </a>
 
           <a data-route="visualizers" on-tap="tapMenu">
@@ -347,6 +365,199 @@
                   </template>
                 </ul>
               </p>
+            </section>
+
+            <section data-route="getting-started">
+              <h1>Getting started</h1>
+              <h2>Our first visualization</h2>
+              <p>
+                Let's start with a simple encoding of the
+                <a href="https://en.wikipedia.org/wiki/Travelling_salesman_problem">
+                  Traveling salesman problem
+                </a> (henceforth TSP).
+                We will use the <code>#minimize</code> statement in ASP, and
+                visualize each answer set <a href="http://potassco.sourceforge.net/">clingo</a>
+                finds that is better than the previous one.
+              </p>
+              <p>
+<pre>
+  % based on tsp.lp from the book Answer Set Solving in Practice
+  % Modified for gringo4 syntax
+
+  proj_edge(X, Y) :- cost(X, Y, C).
+
+  % Generate
+  1 { edge(X, Y) : proj_edge(X, Y) } 1 :- node(X).
+  1 { edge(X, Y) : proj_edge(X, Y) } 1 :- node(Y).
+
+  % Test
+  reached(X) :- X = #min{ Y: node(Y) }.
+  reached(Y) :- edge(X, Y), reached(X).
+  :- node(Y), not reached(Y).
+
+  % Optimize
+  #minimize { C: edge(X, Y), cost(X, Y, C) }.
+
+  % Display
+  #show node/1. % any node/1 will be shown as a node in the visualization
+  #show edge/2. % any edge/2 will be shown as an edge in the visualization
+
+  % EOF
+</pre>
+              </p>
+              <p>
+                The encoding above is available as a file here:
+                <a href="../../examples/tsp/tsp.lp">examples/tsp/tsp.lp</a>
+                and the instance we'll use is available here:
+                <a href="../../examples/tsp/instance-big.lp">examples/tsp/instance-big.lp</a>.
+                Run <tt>clingo</tt> with <code>clingo tsp.lp instance-big.lp > tsp-out.log</code>
+                to save the log of the run and feed this file to Visingo in the
+                "New visualization" screen.
+              </p>
+              <p>
+                Just in case, the output log is available as a file here:
+                <a href="../../examples/tsp/tsp-out.log">examples/tsp/tsp-out.log</a>.
+              </p>
+              <div>
+                <p>
+                  Choose log file type as "Output log" and choose the log you just
+                  created. Then click on the "Parse" button.<br>
+                  Since we care about the direction of the edges, let's choose
+                  "Directed" on the "Consider edges directed/undirected" option.
+                  Then press the launch button.
+                </p>
+                <img src="../../examples/tsp/choosing-log-parse.png" style="width:100%; max-width:400px;">
+                <img src="../../examples/tsp/choosing-directed-launch.png" style="width:100%; max-width:300px;">
+              </div>
+              <div>
+                <p>
+                  If all went well, the visualization should start.
+                </p>
+                <a href="../../examples/tsp/first-visualization.png">
+                  <img src="../../examples/tsp/first-visualization.png" style="width:100%; max-width:600px;">
+                </a>
+              </div>
+              <p>
+                More options for the Network Visualizer is available on the
+                help page of the visualizer.
+              </p>
+              <p>
+                If you have old clingo/clasp output log files that you'd like to
+                visualize and the predicate names in them don't match the ones
+                used by the visualizer module, you can post process the log file
+                with some text editor &amp; find-replace, or by hand, or you can
+                use the tool <a href="http://github.com/vukk/ppas">ppas</a> that
+                allows rewriting ASP solver log files using familiar ASP syntax.
+              </p>
+
+              <h2>Improving the visualization</h2>
+              <p>
+                In the previous section we ended up with a visualization of the
+                graph evolving on the screen. But we can surely do better. What
+                is a good visualization depends on the problem you have on hand.
+                For TSP one idea is to keep the edges that were just removed and
+                color them with a different color. Additionally we can color the
+                edges that were just added with yet another color.
+              </p>
+              <p>
+                To make comparison to predicates in previous answer set(s) (models),
+                we need to use an external tool. We'll use the
+                <a href="http://github.com/vukk/ppas">ppas</a> (post process answer sets)
+                tool, which wraps all answer sets to predicate <code>_as(Atom,SequenceNumber)</code>
+                where Atom is an atom in an answer set and SequenceNumber is the
+                number of the answer set in the log file. <tt>ppas</tt> sets the
+                constant <code>asCount</code> to refer to the total number of
+                answer sets in the log file.
+              </p>
+              <p>
+                Well use the following script for <tt>ppas</tt>
+              </p>
+              <p>
+<pre>
+  % Map node, edge and attributes through
+  _pp(Any, S) :- _as(Any, S).
+
+  % Edges that were just removed
+  removed(From, To, Step) :- _as(edge(From,To), Step-1), not _as(edge(From,To), Step).
+  % Edges that were just added
+  added(From, To, Step) :- not _as(edge(From,To), Step-1), _as(edge(From,To), Step).
+  % Edges that stay
+  other(From, To, Step) :- _as(edge(From,To), Step), not added(From, To, Step).
+
+  % Add, and color removed edges gray
+  _pp(edge(From,To),Step) :- removed(From,To,Step).
+  _pp(edgeAttr((From, To), color, "#cccccc"), Step) :- removed(From, To, Step).
+
+  % Color added edges orange
+  _pp(edgeAttr((From, To), color, "#ff8c00"), Step) :- added(From, To, Step).
+  % Color other edges black
+  _pp(edgeAttr((From, To), color, "#222222"), Step) :- other(From, To, Step).
+
+</pre>
+              </p>
+              <p>
+                The post processing script is available as a file here:
+                <a href="../../examples/tsp/ppas-tsp-color-script.lp">examples/tsp/ppas-tsp-color-script.lp</a>.
+              </p>
+              <p>
+                Let's also display the edge costs at the edges as labels. We
+                modify the <tt>tsp.lp</tt>, adding an edge attribute
+                <code>edgeAttr((From,To), label, Cost)</code>.
+              </p>
+              <p>
+<pre>
+  % based on tsp.lp from the book Answer Set Solving in Practice
+  % Modified for gringo4 syntax
+
+  proj_edge(X, Y) :- cost(X, Y, C).
+
+  % Generate
+  1 { edge(X, Y) : proj_edge(X, Y) } 1 :- node(X).
+  1 { edge(X, Y) : proj_edge(X, Y) } 1 :- node(Y).
+
+  % Test
+  reached(X) :- X = #min{ Y: node(Y) }.
+  reached(Y) :- edge(X, Y), reached(X).
+  :- node(Y), not reached(Y).
+
+  % Optimize
+  #minimize { C: edge(X, Y), cost(X, Y, C) }.
+
+  % For visualization
+  edgeAttr((X, Y), label, C) :- edge(X, Y), cost(X, Y, C).
+
+  % Display
+  #show node/1. % node/1 will be shown as a nodes in the visualization
+  #show edge/2. % edge/2 will be shown as an edges in the visualization
+  #show edgeAttr/3. % edge attributes for visualization
+
+  % EOF
+</pre>
+              </p>
+              <p>
+                The new encoding is available as a file here:
+                <a href="../../examples/tsp/tsp-labelled.lp">examples/tsp/tsp-labelled.lp</a>.
+              </p>
+              <p>
+                Now lets run <tt>clingo</tt> with
+                <code>clingo tsp-labelled.lp instance-big.lp > tsp-out-labelled.log</code>
+                and add coloring with <tt>ppas</tt>
+                <code>clingo ppas-tsp-color-script.lp tsp-out-labelled.log tsp-out-labelled-colored.log</code>.
+                Now feed the newest log file to Visingo and start the visualization.
+              </p>
+              <div>
+                <p>
+                  Just in case, the output log files are available here:
+                  <a href="../../examples/tsp/tsp-out-labelled.log">examples/tsp/tsp-out-labelled.log</a>
+                  and here:
+                  <a href="../../examples/tsp/tsp-out-labelled-colored.log">examples/tsp/tsp-out-labelled-colored.log</a>.
+                  <br>
+                  If all went well, the visualization should be displaying.
+                </p>
+                <a href="../../examples/tsp/labelled-colored-visualization.png">
+                  <img src="../../examples/tsp/labelled-colored-visualization.png" style="width:100%; max-width:600px;">
+                </a>
+              </div>
             </section>
 
             <section data-route="extend">
