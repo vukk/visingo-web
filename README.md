@@ -9,8 +9,18 @@ Note that the instance above is not necessarily the latest version.
 ## Installing
 
 Visingo-Web is a fully client-side application. This is achieved by utilizing
-WebComponents (Polymer) and JavaScript. To "install" Visingo-Web, simply clone
-the git repository and serve the directory with some web server.
+WebComponents (Polymer) and JavaScript.
+
+Currently the requirements for installing and serving Visingo-Web are
+- A web server capable of serving files
+- [bower](http://bower.io/)
+- [PEG.js](http://pegjs.org/)
+
+To install Visingo-Web
+- Clone the git repository
+- Run `bower update` to fetch the web components
+- Run `elements/visingo-parsers/gen.sh` to generate the required parsers
+- Serve the directory with some web server
 
 For local hosting and developing, `python -m SimpleHTTPServer 8888` might be
 useful. This command serves the current working directory on localhost port 8888.
