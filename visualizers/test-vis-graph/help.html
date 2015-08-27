@@ -362,7 +362,12 @@
       The indentifier has to be unique and non-changing (identifier can't change between answer sets).
     </p>
     <p>
-      Color attributes can typically be given
+      Color attributes can be given as HTML/CSS colors <code>#ff00ee</code>,
+      <code>rgba(120,255,0,0.5)</code>, <code>red</code>. See
+      <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value">
+        MDN on CSS color value
+      </a>
+      for more information.
     </p>
     <p>
       The visualizer module does some type conversions from ASP atoms to JavaScript.
@@ -1626,7 +1631,7 @@ var options: {
           <tr>
             <td class="nowrap">hierarchicalRepulsion, centralGravity</td>
             <td>Number</td>
-            <td>0.0'</td>
+            <td>0.0</td>
             <td>There is a central gravity attractor to pull the entire network back to the center.</td>
           </tr>
           <tr>
