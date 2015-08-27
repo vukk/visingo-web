@@ -3,7 +3,7 @@
 This is the self-contained Web-UI of Visingo <https://github.com/vukk/visingo>.
 
 The Web-UI is capable of playback visualization by itself.
-A live instance is be available at <http://users.ics.aalto.fi/kuuranne/visingo-web/>.
+A live instance is available at <http://users.ics.aalto.fi/kuuranne/visingo-web/>.
 Note that the instance above is not necessarily the latest version.
 
 ## Installing
