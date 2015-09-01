@@ -65,6 +65,7 @@
       text-align: center;
     }
     #answerNumberInputContainer {
+      min-width: 3em;
       width: 3em;
     }
     #intervalInputContainer {
@@ -132,7 +133,7 @@
         <div class="flex"></div>
         <paper-input-container id="answerNumberInputContainer" always-float-label>
           <label>Model&#35;</label>
-          <input id="answerNumberInput" is="iron-input" value="[[answerNumber]]" disabled>
+          <input id="answerNumberInput" is="iron-input" value="[[_answerNumberDisplay]]" disabled>
           <paper-input-error>TODO remove &amp; fix margin-bottom</paper-input-error>
         </paper-input-container>
         <div class="flex"></div>
@@ -203,10 +204,34 @@
           type: Number,
           notify: true
         },
+        answerNumberTotal: {
+          type: Number,
+          notify: true
+        },
+        _answerNumberDisplay: {
+          type: String,
+          computed: 'computeAnsNumDisp(answerNumber, answerNumberTotal)'
+        },
         timeToNext: {
           type: String,
           value: "00:00.000"
         }
+      },
+
+      computeAnsNumDisp: function(number, total) {
+        var ret;
+        if(total !== 0)
+          ret = number.toString() + "/" + total.toString();
+        else
+          ret = number.toString();
+
+        var elem = this.$$('#answerNumberInputContainer');
+        if(elem) {
+          console.log('triggered', elem, Polymer.dom(elem));
+          Polymer.dom(elem).node.style.width = ret.length.toString()+"em";
+        }
+
+        return ret;
       },
 
       _intervalChanged: function(newVal, oldVal) {
@@ -221,6 +246,15 @@
       pause: function() { this.controls.pause(); },
       next: function() { this.controls.next(); },
       toEnd: function() { this.controls.toEnd(); },
+
+      ready: function() {
+        if(typeof this.answerNumberTotal === 'undefined')
+          this.answerNumberTotal = 0;
+
+        window.visingo = window.visingo || {};
+        window.visingo.debug = window.visingo.debug || {};
+        window.visingo.debug.toolbar = this;
+      }
 
     });
   })();

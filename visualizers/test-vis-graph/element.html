@@ -290,10 +290,11 @@ div.vis-network-tooltip {
           };
         }
         this._playbackState.data = allData;
-
+        this._toolbarControlsElement.set('answerNumberTotal', allData.length);
 
         this.set('_playbackState.current', 0);
         //console.log(this._playbackState.data);
+
 
         // load first answer set immediately
         // if no answer sets are present, playbackTick should handle it nicely

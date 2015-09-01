@@ -181,7 +181,7 @@ var testVisGraphVisualizer = (function (vis, _, parser) {
             entities.nodes.update(parsed.nodes[key]);
         });
         _.map(edgesToUpd, function(key) {
-            console.log('edgeupdate', parsed.edges[key]);
+            //console.log('edgeupdate', parsed.edges[key]);
             entities.edges.update(parsed.edges[key]);
         });
 
