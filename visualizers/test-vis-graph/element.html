@@ -21,9 +21,16 @@ TODO: additional settings dialog, follow node network.focus(NodeID, {scale: 0.5,
 
 <link rel="import" href="toolbar-controls.html">
 
+<style is="custom-style">
+/* Restrict tooltip width */
+div.vis-network-tooltip {
+  max-width: 80vw;
+  /*max-height: 100%;*/
+}
+</style>
+
 <dom-module id="visualizer-test-vis-graph-element">
   <template>
-
     <style type="text/css">
       :host {
         /*display: block;
@@ -44,7 +51,6 @@ TODO: additional settings dialog, follow node network.focus(NodeID, {scale: 0.5,
 
     <!-- vis.js canvas div -->
     <div id="visjsCanvasContainer"></div>
-
   </template>
 </dom-module>
 <script>
