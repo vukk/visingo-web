@@ -295,9 +295,14 @@ entityIdent "entity identifier"
   / str:aspstring
   / atom:predicateIdent
 
-// not " or newline related characters
+// a string, starts with " and ends with "
 string "string"
-  = str:([^\"\r\n\f]+) { return str.join("") }
+  = str:(stringchar+) { return str.join("") }
+//  = str:([^\"\r\n\f]+) { return str.join("") }
+
+stringchar
+  = "\\\""
+  / [^"]
 
 // prefix allows default negation e.g. '-predicate(X,Y)'
 predicateIdent "predicate identifier"

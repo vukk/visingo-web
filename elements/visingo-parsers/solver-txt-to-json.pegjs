@@ -231,7 +231,7 @@ posinteger "positive integer"
   = digits:[0-9]+ { return makeInteger(digits); }
 
 integer "integer"
-  = sign:"-"? digits:([0-9]+) { d = makeInteger(digits); return (sign === '-') ? -d : d }
+  = sign:"-"? digits:([0-9]+) { var d = makeInteger(digits); return (sign === '-') ? -d : d }
 
 timedecimal "positive decimal number"
   = float:$(characteristic:[0-9]+ "." decimal:[0-9]+)
@@ -251,9 +251,14 @@ number "number"
 
 /* characters & strings */
 
-// not " or newline related characters
+// a string, starts with " and ends with "
 string "string"
-  = str:([^\"\r\n\f]+) { return str.join("") }
+  = str:(stringchar+) { return str.join("") }
+//  = str:([^\"\r\n\f]+) { return str.join("") }
+
+stringchar
+  = "\\\""
+  / [^"]
 
 // prefix allows default negation e.g. '-predicate(X,Y)'
 predicateIdent "predicate identifier"
