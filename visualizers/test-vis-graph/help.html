@@ -1033,7 +1033,12 @@
               <td class="nowrap">color, color</td>
               <td>String</td>
               <td>"#848484"</td>
-              <td>The color of the border of the node when it is not selected.<!-- or hovered over <i>(assuming hover is
+              <td>The color of the border of the node when it is not selected.
+                  Note that <code>color, inherit</code> defaults to "from"
+                  and thus overrides this. If you are looking for the default color
+                  resulting from inherit "from", it is the same as node border
+                  color default, <code>#7CB342</code>.
+                <!-- or hovered over <i>(assuming hover is
                   enabled in the interaction module)</i>.-->
               </td>
           </tr>
