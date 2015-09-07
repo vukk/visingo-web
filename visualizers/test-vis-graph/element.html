@@ -61,6 +61,20 @@ div.vis-network-tooltip {
       is: 'visualizer-test-vis-graph-element',
 
       properties: {
+        info: {
+          type: Object,
+          value: function() {
+            return {
+              "name": "Network visualizer",
+              "tag": "test-vis-graph",
+              "directory": "test-vis-graph",
+              "bundleSaveSettings": {
+                "autoZoom": "_autoZoom",
+                "timerInterval": "_timerInterval"
+              }
+            };
+          }
+        },
         input: {
           type: Object
         },
@@ -80,6 +94,9 @@ div.vis-network-tooltip {
           type: Object,
           value: function() { return {}; }
         },
+        _toolbar: {
+          type: Object
+        },
         _toolbarControlsElement: {
           type: Object
         },
@@ -88,6 +105,9 @@ div.vis-network-tooltip {
           value: false,
           observer: '_autoZoomChanged'
         },
+        _networkFitAsync: {
+          type: Object
+        }
       },
 
       observers: [
@@ -100,32 +120,30 @@ div.vis-network-tooltip {
         this._toolbarControlsElement.set('answerNumber', state);
         // auto zoom
         if(this._autoZoom === true) {
+          this.cancelAsync(this._networkFitAsync);
           this._fitLater();
         }
       },
 
       _autoZoomChanged: function(newVal, oldVal) {
+        console.log('_azChanged', this._networkFitAsync);
         if(newVal === false) return;
         // Do fit later:
+        this.cancelAsync(this._networkFitAsync);
         this._fitLater();
       },
 
       // NOTE: Try to avoid two network fit animations being in action at the same time.
       _fitLater: function() {
-        // NOTE: minimum animation time will be 1000ms, if we don't have that
-        // much time, just skip the fit.
-        if(this._timerInterval < MIN_ZOOM_INTERVAL) return;
-
-        var maxTimeForAnimation = this._timerInterval - 1000;
-        // cap at 3000
-        maxTimeForAnimation = (maxTimeForAnimation > 3000) ? 3000 : maxTimeForAnimation;
-
-        this.async(function() {
-          this.fitNetwork(maxTimeForAnimation);
-        }.bind(this), 1000);
+        console.log('_fitLater', this._networkFitAsync);
+        this.cancelAsync(this._networkFitAsync);
+        this._networkFitAsync = this.async(function() {
+          this.fitNetwork(1000);
+        }.bind(this), 800);
       },
 
       fitNetwork: function() {
+        console.log('fitNetwork');
         this._visScript.fitNetwork();
       },
 
@@ -216,30 +234,34 @@ div.vis-network-tooltip {
 
         // get toolbar
         var tb = document.getElementById('visingoMainToolbar');
+        if(tb !== null) {
+          tb.visualizerElement = this;
+          this._toolbar = tb;
 
-        // set interval default value
-        elem.interval = this._timerInterval / 1000;
-        // bind to interval
-        elem.addEventListener('interval-changed', function(evt) {
-          this._timerInterval = evt.target.interval*1000;
-          if(this._timerInterval < MIN_ZOOM_INTERVAL) {
-            tb.set('autoZoom', false);
-            tb.set('disableAutoZoom', true);
-            return;
-          }
-          if(tb.disableAutoZoom === true)
-            tb.set('disableAutoZoom', false);
-        }.bind(this));
+          // set interval default value
+          elem.interval = this._timerInterval / 1000;
+          // bind to interval
+          elem.addEventListener('interval-changed', function(evt) {
+            this._timerInterval = evt.target.interval*1000;
+            if(this._timerInterval < MIN_ZOOM_INTERVAL) {
+              tb.set('autoZoom', false);
+              tb.set('disableAutoZoom', true);
+              return;
+            }
+            if(tb.disableAutoZoom === true)
+              tb.set('disableAutoZoom', false);
+          }.bind(this));
 
-        // attach controls to toolbar
-        tb.attachComponent(elem);
-        this._toolbarControlsElement = elem;
-        // enable auto-zoom setting in toolbar
-        tb.showAutoZoom = true;
-        // bind to auto zoom
-        tb.addEventListener('auto-zoom-changed', function(evt) {
-          this._autoZoom = evt.target.autoZoom;
-        }.bind(this));
+          // attach controls to toolbar
+          tb.attachComponent(elem);
+          this._toolbarControlsElement = elem;
+          // enable auto-zoom setting in toolbar
+          tb.showAutoZoom = true;
+          // bind to auto zoom
+          tb.addEventListener('auto-zoom-changed', function(evt) {
+            this._autoZoom = evt.target.autoZoom;
+          }.bind(this));
+        }
 
         // wait for rest of the stuff to load
         this.waitForLoad();
@@ -267,8 +289,33 @@ div.vis-network-tooltip {
         window.visingo.debug.element = this;
         window.visingo.debug.container = this.$.visjsCanvasContainer;
 
+        // Load some settings
+        var s = this.input.settings;
+        // Can be running with or without toolbar, so take that into account
+        if(typeof s.autoZoom !== 'undefined' &&
+           typeof s.timerInterval !== 'undefined' &&
+           s.timerInterval >= MIN_ZOOM_INTERVAL) {
+          console.log('autoZoom',this._toolbar);
+          if(typeof this._toolbar !== 'undefined')
+            this._toolbar.set('autoZoom', s.autoZoom);
+          else
+            this._autoZoom = s.autoZoom;
+        }
+        if(typeof s.timerInterval !== 'undefined') {
+          console.log('timerInterval',this._toolbarControlsElement);
+          if(typeof this._toolbarControlsElement !== 'undefined')
+            this._toolbarControlsElement.set('interval', s.timerInterval / 1000);
+          else
+            this._timerInterval = s.timerInterval;
+        }
+
+        // Start visualization
+
+        // Playback visualization
         if(this.input.visualizationType === 'playback')
           this.startPlayback();
+        //else if(this.input.visualizationType === 'interactive')
+        //  this.startInteractive();
       },
 
       startPlayback: function () {
@@ -290,10 +337,10 @@ div.vis-network-tooltip {
           };
         }
         this._playbackState.data = allData;
-        this._toolbarControlsElement.set('answerNumberTotal', allData.length);
+        if(typeof this._toolbarControlsElement !== 'undefined')
+          this._toolbarControlsElement.set('answerNumberTotal', allData.length);
 
         this.set('_playbackState.current', 0);
-        //console.log(this._playbackState.data);
 
 
         // load first answer set immediately
@@ -326,17 +373,13 @@ div.vis-network-tooltip {
         console.log('new playbackState.current', this._playbackState.current);
 
         // flash time display focus to visually indicate change
-        if(!noFlash) {
+        if(!noFlash && typeof this._toolbarControlsElement !== 'undefined') {
           this._toolbarControlsElement.$.timeToNextInputContainer._setFocused(true);
           this.async(function() {
             this._toolbarControlsElement.$.timeToNextInputContainer._setFocused(false);
           }, 250); // 250ms seems to be enough for the underline to flash fully
         }
 
-        // if in the end TODO: make based on length?
-        // if there are no more answer sets to display, return false
-        //if(typeof this._playbackState.data[this._playbackState.current + 1] === 'undefined')
-        //  return false;
         // if there are no more answer sets to display after this one, return false
         if(this._playbackState.current >= this._playbackState.data.length)
           return false;
@@ -347,7 +390,8 @@ div.vis-network-tooltip {
 
       timerTick: function() {
         // update time display
-        this._toolbarControlsElement.timeToNext = this._timer.msToTime(this._timer.lap());
+        if(typeof this._toolbarControlsElement !== 'undefined')
+          this._toolbarControlsElement.timeToNext = this._timer.msToTime(this._timer.lap());
       }
 
     });

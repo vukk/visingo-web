@@ -6,6 +6,7 @@
 
     /* defaults */
     app.qtConnected = false;
+    app.loadedFromBundle = false;
 
     // Listen for template bound event to know when bindings
     // have resolved and content has been stamped to the page
@@ -15,7 +16,9 @@
         // TODO: this may not be the correct place to put our once-app-is-ready stuff
         if (typeof qt !== 'undefined' && typeof qt.webChannelTransport !== 'undefined') {
             app.qtConnected = true;
-            document.getElementById('visingoMainToolbar').qtConnected = true;
+            var tb = document.getElementById('visingoMainToolbar');
+            if(tb !== null)
+              tb.qtConnected = true;
 
             new QWebChannel(qt.webChannelTransport, function(channel) { // jshint ignore:line
 

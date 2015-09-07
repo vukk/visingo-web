@@ -237,6 +237,7 @@
         return ret;
       },
 
+      // validate before firing an interval-changed event (thus no notify: true)
       _intervalChanged: function(newVal, oldVal) {
         var iiElem = this.$$('#intervalInput');
         if(typeof iiElem === 'undefined' || !iiElem.validate()) return;
@@ -256,7 +257,7 @@
 
         window.visingo = window.visingo || {};
         window.visingo.debug = window.visingo.debug || {};
-        window.visingo.debug.toolbar = this;
+        window.visingo.debug.toolbarControls = this;
       }
 
     });

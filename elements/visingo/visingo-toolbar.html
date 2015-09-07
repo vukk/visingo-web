@@ -30,12 +30,16 @@
       margin-right: 0.5em;
     }
 
-    #newButtonDiv a, #newButtonDiv a:hover, #newButtonDiv a:visited, #newButtonDiv a:active {
-      color:inherit;
+    .linkedicon a, .linkedicon a:hover, .linkedicon a:visited, .linkedicon a:active {
+      color: inherit;
       text-decoration: none;
     }
 
-
+    .not-active {
+      pointer-events: none;
+      cursor: default;
+      color: var(--paper-grey-500);
+    }
 
   </style>
 
@@ -44,7 +48,7 @@
     <paper-toolbar>
 
     <!-- Toolbar menu -->
-    <div id="newButtonDiv" title="New visualization">
+    <div id="newButtonDiv" title="New visualization" class="linkedicon">
       <a href="../../index.html">
         <paper-icon-button icon="av:queue"></paper-icon-button>
       </a>
@@ -53,6 +57,14 @@
     <div id="helpButtonDiv" title="Show help">
       <paper-icon-button icon="help" on-tap="tapHelp"></paper-icon-button>
     </div>
+
+    <!-- Bundle download button -->
+    <div id="dlBundleButtonDiv" title="Download visualization bundle" class="linkedicon">
+      <a id="bundleDownloadLink" on-tap="tapBundleDL" hidden>
+        <paper-icon-button icon="file-download"></paper-icon-button>
+      </a>
+    </div>
+
     <!--div for="helpButtonDiv">
       Show help
     </div-->
@@ -100,6 +112,15 @@
           type: String,
           notify: true
         },
+        visualizerElement: { // set only when a visualization is displayed
+          type: Object,
+          observer: '_visualizerElementChanged'
+        },
+        loadedFromBundle: {
+          type: Boolean,
+          value: false,
+          observer: '_loadedFromBundleChanged'
+        },
         qtConnected: {
           type: Boolean,
           value: false,
@@ -133,9 +154,60 @@
         }
       },
 
+      _visualizerElementChanged(newVal, oldVal) {
+        this._checkShowDLBundle(newVal, this.$.bundleDownloadLink);
+      },
+
+      _loadedFromBundleChanged: function(newVal, oldVal) {
+        this.toggleClass('not-active', newVal, this.$.bundleDownloadLink);
+        this.toggleClass('linkedicon', !newVal, this.$.dlBundleButtonDiv)
+      },
+
+      // Creates the bundle for download TODO: rename function name, fix observer
+      _checkShowDLBundle: function(visElem, link) {
+        if(typeof visElem === 'undefined' || typeof link === 'undefined') {
+          return false;
+        }
+
+        // TODO: defensive and possibly unnecessary
+        if(typeof window.localStorage[visElem.info.tag] === 'undefined')
+          return false;
+
+        // create bundle for download
+        var bundleObj = JSON.parse(window.localStorage[visElem.info.tag]);
+        // load additional settings from the visualizer
+        if(typeof visElem.info.bundleSaveSettings !== 'undefined') {
+          bundleObj.settings = bundleObj.settings || {};
+          Object.keys(visElem.info.bundleSaveSettings).forEach(function(key) {
+            bundleObj.settings[key] = visElem.get(visElem.info.bundleSaveSettings[key]);
+          });
+        }
+        var json = JSON.stringify(bundleObj);
+        // wrap to be JSONP
+        var jsonP = 'visingo_load_bundle(' + json + ');';
+        // encode data
+        var data = 'data:text/json;charset=utf-8,' + encodeURIComponent(jsonP);
+        var filename = visElem.input.inputFiles[0].name + '.visingobundle';
+        Polymer.dom(link).node.setAttribute('href', data);
+        Polymer.dom(link).node.setAttribute('download', filename);
+        Polymer.dom(link).node.hidden = false;
+
+        return true;
+      },
+
       created: function() {
         // set visingo-toolbar to have paper-header class, otherwise layout bugs
         this.toggleClass('paper-header', true);
+      },
+
+      ready: function() {
+        window.visingo = window.visingo || {};
+        window.visingo.debug = window.visingo.debug || {};
+        window.visingo.debug.toolbar = this;
+      },
+
+      attached: function() {
+        this._checkShowDLBundle(this.visualizerElement, this.$.bundleDownloadLink);
       },
 
       _qtConnectedChanged: function(newValue, oldValue) {
@@ -148,6 +220,13 @@
       tapHelp: function(evt) {
         // toggle
         this.showHelp = !this.showHelp;
+      },
+
+      tapBundleDL: function(evt) {
+        // refresh bundle to save current autoZoom etc. settings
+        this._checkShowDLBundle(this.visualizerElement, this.$.bundleDownloadLink);
+        // let the event continue onwards
+        return true;
       },
 
       attachComponent: function(component) {

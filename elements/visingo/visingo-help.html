@@ -188,6 +188,11 @@
             </a>
           </template>
 
+          <a data-route="embed" on-tap="tapMenu">
+            <iron-icon icon="select-all"></iron-icon>
+            <span>Embedding a visualizer</span>
+          </a>
+
           <a data-route="extend" on-tap="tapMenu">
             <iron-icon icon="code"></iron-icon>
             <span>Implementing a visualizer</span>
@@ -558,6 +563,38 @@
                   <img src="../../examples/tsp/labelled-colored-visualization.png" style="width:100%; max-width:600px;">
                 </a>
               </div>
+            </section>
+
+            <section data-route="embed">
+              <h1>Using a visualization as part of your site</h1>
+              <h2>Bundle support</h2>
+              <p>
+                Visingo-Web is capable of loading <code>.visingobundle</code>
+                JSONP files and displaying them. This allows us to embed a
+                visualization on an HTML page using HTML framesets or the
+                <code>&langle;iframe&rangle;</code> tag.
+              </p>
+              <p>
+                To make a bundle, simply create a visualization and click on the
+                "Download bundle" button on the toolbar. Note that this button
+                is disabled if you loaded the visualization from a bundle.
+              </p>
+              <p>
+                Now upload the bundle file to a server so it can be reached via\
+                HTTP and check that everything works by loading the bundle.
+                Visingo will load a bundle if the <code>bundleUrl</code>
+                parameter is set, e.g.
+                <tt>visualize.html?bundleUrl=http://foo.com/bar.visingobundle</tt>.
+                A visualizer without toolbar is available with
+                <tt>visualize-plain.html</tt>.
+              </p>
+              <h2>Embedding the visualization as part of your site</h2>
+              <p>
+                Check the example in <tt>visingo-web/demos folder</tt>, or
+                &langle;<a href="https://logic.ics.hut.fi/visingo/demos/iframe-sample.html">
+                  https://logic.ics.hut.fi/visingo/demos/iframe-sample.html
+                </a>&rangle;.
+              </p>
             </section>
 
             <section data-route="extend">

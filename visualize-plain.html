@@ -21,9 +21,6 @@
 </visingo-load-bundle-ajax>
 <paper-header-panel>
 
-<!-- toolbar, two way bind route since menu is in toolbar -->
-<visingo-toolbar id="visingoMainToolbar" route="{{route}}" show-help="{{displayHelp}}" loaded-from-bundle={{loadedFromBundle}}></visingo-toolbar>
-
 <!-- Main Content -->
 <div class="fit">
   <!-- Visualizer specific content should be loaded to here -->
@@ -32,21 +29,10 @@
 
 </paper-header-panel>
 
-<!-- Currently extending polymer custom elements is not possible, so stamp
-     paper dialog directly to the page.
-     NOTE: It seems that styles need to be applied directly here, and not in
-           app-theme.html. Otherwise the dialog will not display properly. -->
-<paper-dialog id="helpDialog" with-backdrop opened="{{displayHelp}}" style="min-width: 90%; min-height: 90%; border-radius: 5px;">
-    <visingo-help panel visualizers="[[visualizers]]" qt-connected="[[qtConnected]]"></visingo-help>
-</paper-dialog>
-
 </template> <!-- end template dom-bind -->
 
 <script src="scripts/app.js"></script>
 <script src="scripts/visualize.js"></script>
-<script>
-  //console.log(JSON.parse(window.localStorage[app.params.visualizer]));
-</script>
-</body>
 
+</body>
 </html>

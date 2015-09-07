@@ -1,0 +1,57 @@
+<link rel="import" href="../../bower_components/byutv-jsonp/byutv-jsonp.html">
+
+<dom-module id="visingo-load-bundle-ajax">
+  <template>
+    <!--iron-ajax id="ajax"
+      url="../../visualizers/web-mode-enabled.json"
+      handle-as="json"
+      on-response="setWebModeVisualizers"
+      >
+    </iron-ajax-->
+    <byutv-jsonp id="loadElement"
+        url={{url}}
+        params='{}'
+        handle-as="json"
+        on-response="bundleHandler"
+        on-error="errorHandler"
+        cache="true"
+        callback-key=""
+        callback-value="visingo_load_bundle"
+        debounce-duration="300"></byutv-jsonp>
+    <!-- TODO: on-error; also use on-response handler to set webMode = webMode || {}; webMode.visualizers = ... -->
+  </template>
+</dom-module>
+
+<script>
+  (function() {
+    Polymer({
+      is: 'visingo-load-bundle-ajax',
+
+      properties: {
+        bundle: {
+          type: Object,
+          notify: true
+        },
+        url: {
+          type: String,
+          value: ''
+        }
+      },
+
+      bundleHandler: function(event) {
+        this.set('bundle', event.target.lastResponse);
+      },
+
+      errorHandler: function(event) {
+        console.log('ERROR: Bundle load error: ', event.detail);
+        window.alert('ERROR: Loading bundle was unsuccessful');
+      },
+
+      generateRequest: function() {
+        this.$.loadElement.generateRequest();
+      }
+
+    });
+  })();
+
+</script>
