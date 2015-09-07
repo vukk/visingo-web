@@ -115,18 +115,18 @@ div.vis-network-tooltip {
       ],
 
       _playbackPointerChanged: function(state) {
-        // bind playback pointer to answer number in toolbar
-        if(typeof this._toolbarControlsElement === 'undefined') return;
-        this._toolbarControlsElement.set('answerNumber', state);
         // auto zoom
         if(this._autoZoom === true) {
           this.cancelAsync(this._networkFitAsync);
           this._fitLater();
         }
+
+        // bind playback pointer to answer number in toolbar
+        if(typeof this._toolbarControlsElement === 'undefined') return;
+        this._toolbarControlsElement.set('answerNumber', state);
       },
 
       _autoZoomChanged: function(newVal, oldVal) {
-        console.log('_azChanged', this._networkFitAsync);
         if(newVal === false) return;
         // Do fit later:
         this.cancelAsync(this._networkFitAsync);
@@ -135,11 +135,10 @@ div.vis-network-tooltip {
 
       // NOTE: Try to avoid two network fit animations being in action at the same time.
       _fitLater: function() {
-        console.log('_fitLater', this._networkFitAsync);
         this.cancelAsync(this._networkFitAsync);
         this._networkFitAsync = this.async(function() {
-          this.fitNetwork(1000);
-        }.bind(this), 800);
+          this.fitNetwork(800);
+        }.bind(this), 1200);
       },
 
       fitNetwork: function() {
