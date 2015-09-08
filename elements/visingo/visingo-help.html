@@ -595,6 +595,13 @@
                   https://logic.ics.hut.fi/visingo/demos/iframe-sample.html
                 </a>&rangle;.
               </p>
+              <p>
+                Note that the JSONP format used to circumvent Same Origin Policy
+                allows executing JavaScript code, so don't load untrusted
+                bundles. The bundle file should only contain a JSON object
+                wrapped in <code>visingo_load_bundle()</code> function,
+                nothing else.
+              </p>
             </section>
 
             <section data-route="extend">
