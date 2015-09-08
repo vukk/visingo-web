@@ -1,0 +1,128 @@
+clingo version 4.5.0
+Reading from GraphicalModels.asp ...
+Solving...
+Answer: 1
+edge(1,9) edge(1,24) edge(1,15) edge(1,14) edge(1,21) edge(4,6) node(1) node(4) node(23) node(5) node(19) node(14) node(21) node(18) node(6) node(7) node(15) node(13) node(9) node(11) node(24) node(25) nodeAttr(1,label,"IncDiff") nodeAttr(1,title,"Tuloerot ovat kasvaneet Suomessa 1990-luvun puolivälin jälkeen nopeasti.<br>Miten siihen pitäisi suhtautua?") nodeAttr(4,label,"ChSup") nodeAttr(4,title,"Lapsilisää maksetaan jokaisesta Suomessa asuvasta lapsesta 17 ikävuoteen asti riippumatta vanhempien tulotasosta.<br>Mitä lapsilisille pitäisi tehdä?") nodeAttr(5,label,"Seniors") nodeAttr(5,title,"Sosiaali- ja terveysministeriössä valmistellaan parhaillaan niin sanottua ikälakia, johon<br> mahdollisesti kirjataan yhtenäisiä ikäihmisten hoidon laatuvaatimuksia ja<br> palvelutakuu.<br>Pitäisikö ikäihmisten hoivatakuu kirjata lakiin ja velvoittaa kunnat tarjoamaan vanhuksille subjektiivinen oikeus hoivaan?") nodeAttr(6,label,"RetAge") nodeAttr(6,title,"Vanhuuseläkkeelle siirtymisen ikä on nyt 63–68 vuotta.<br>Eläkeiän alarajaa pitäisi mielestäni ") nodeAttr(7,label,"LongerW") nodeAttr(7,title,"Suomalaiset jäävät nykyään eläkkeelle keskimäärin alle 60-vuotiaina. Keskeisin syy <br> ennenaikaiseen eläkkeeseen on työkyvyttömyys. Työssäjaksamisen ja työhyvinvoinnin <br> kehittämisen lisäksi eläkeiän nostamiseksi on esitetty myös muita keinoja.<br> Mitä seuraavista käyttäisit ensisijaisesti työurien pidentämiseksi?") nodeAttr(9,label,"Cuts") nodeAttr(9,title,"Vaalien jälkeen valittava hallitus saattaa päättää karsia valtion menoja.<br> Seuraavassa on lueteltu joukko mittaluokaltaan erisuuruisia säästöehdotuksia, joita<br> vaalikeskustelussa on jo esitetty. Minkä näistä valitsisit ensimmäisenä? (Valitse yksi.)") nodeAttr(11,label,"FinTax") nodeAttr(11,title,"Finanssikriisin myötä on vauhdittunut keskustelu rahoitusalan verottamisesta ja<br> osallistumisesta kriisin kustannusten maksuun.<br>EU-komissio on esittänyt maailmanlaajuista<br> pörssi- eli transaktioveroa, jolla verotettaisiin joukkovelkakirjalaina-,osake-, valuutta-<br> ja johdannaiskauppoja.<br>Mikä seuraavista väittämistä vastaa parhaiten näkemystäsi?") nodeAttr(13,label,"TaxBen") nodeAttr(13,title,"Valtio käyttää verotusta rahan keräämisen lisäksi myös erilaisten yhteiskunnallisten<br> tavoitteiden edistämiseen. Kansalaisten toimintaa voidaan ohjata erilaisilla<br> verohuojennuksilla. Vuonna 2009 näiden verohuojennusten takia valtiolta jäi saamatta 13<br> miljardia euroa. Summa vastaa noin neljännestä valtion budjetista. Verotukiin käytettyä rahaa<br> joudutaan keräämään kiristämällä verotusta toisaalla. Mitä seuraavista verotuista olisit<br> valmis leikkaamaan ensimmäiseksi? (Valitse yksi.)") nodeAttr(14,label,"AptLTaxB") nodeAttr(14,title,"Mitä asuntolainojen korkojen verovähennysoikeudelle pitäisi tehdä?") nodeAttr(15,label,"AgFoTax") nodeAttr(15,title,"Rakennetusta ja rakentamattomasta tonttimaasta maksetaan kiinteistöveroa.<br> Pitäisikö myös metsä- ja peltomaalle asettaa kiinteistövero?") nodeAttr(18,label,"FrgnHum") nodeAttr(18,title,"Pitääkö Suomen tuoda Kiinan- ja Venäjän-politiikassaan voimakkaammin esiin myös ihmisoikeudet<br> sekä demokratian tila kyseisissä maissa?") nodeAttr(19,label,"RusReEs") nodeAttr(19,title,"Venäjä kielsi alkuvuodesta ulkomaalaisten maanomistuksen raja-alueiltaan. Suomesta venäläiset<br> voivat ostaa maata ja kiinteistöjä lähes rajoituksetta. Venäläiset ovat ostaneet viime vuosina<br> Suomesta tuhansia kiinteistöjä.<br> Mitä asialle pitäisi tehdä?") nodeAttr(21,label,"FinInFB") nodeAttr(21,title,"Jos Suomi olisi Facebookissa, mitkä kolme tässä listatuista maista sen pitäisi ensimmäisenä<br> pyytää ystävikseen? (Valitse kolme.)") nodeAttr(23,label,"SweReq") nodeAttr(23,title,"Peruskoulussa on kaksi pakollista vierasta kieltä, joista jommankumman pitää olla toinen<br> kotimainen kieli.<br>Pitäisikö toisen kotimaisen kielen opiskelu muuttaa vapaaehtoiseksi?") nodeAttr(24,label,"Suvi") nodeAttr(24,title,"Sopiiko Suvivirren laulaminen koulujen kevätjuhlaan?") nodeAttr(25,label,"Immi") nodeAttr(25,title,"Vaalikaudella 2007–2011 Suomen maahanmuuttopolitiikkaa kiristettiin useilla eri päätöksillä.<br> Millaista on mielestäsi Suomen nykyinen maahanmuuttopolitiikka?")
+Optimization: 24656509
+Answer: 2
+edge(1,9) edge(1,15) edge(1,14) edge(1,21) edge(23,24) edge(4,6) node(1) node(4) node(23) node(5) node(19) node(14) node(21) node(18) node(6) node(7) node(15) node(13) node(9) node(11) node(24) node(25)
+Optimization: 24629709
+Answer: 3
+edge(1,9) edge(1,15) edge(1,14) edge(23,24) edge(4,6) node(1) node(4) node(23) node(5) node(19) node(14) node(21) node(18) node(6) node(7) node(15) node(13) node(9) node(11) node(24) node(25)
+Optimization: 24629509
+Answer: 4
+edge(5,7) edge(5,11) edge(1,5) edge(1,9) edge(19,23) edge(23,24) edge(14,19) edge(21,25) edge(4,6) edge(4,13) edge(4,9) edge(18,21) node(1) node(4) node(23) node(5) node(19) node(14) node(21) node(18) node(6) node(7) node(15) node(13) node(9) node(11) node(24) node(25)
+Optimization: 24564480
+Answer: 5
+edge(6,24) edge(5,7) edge(5,11) edge(1,5) edge(1,9) edge(19,23) edge(23,24) edge(14,19) edge(21,25) edge(4,13) edge(4,9) edge(18,21) node(1) node(4) node(23) node(5) node(19) node(14) node(21) node(18) node(6) node(7) node(15) node(13) node(9) node(11) node(24) node(25)
+Optimization: 24563780
+Answer: 6
+edge(6,25) edge(5,6) edge(5,13) edge(5,11) edge(1,5) edge(1,23) edge(7,18) edge(19,21) edge(23,24) edge(14,19) edge(14,18) edge(15,18) edge(4,6) edge(4,9) node(1) node(4) node(23) node(5) node(19) node(14) node(21) node(18) node(6) node(7) node(15) node(13) node(9) node(11) node(24) node(25)
+Optimization: 24519260
+Answer: 7
+edge(6,25) edge(5,6) edge(5,13) edge(5,11) edge(1,5) edge(1,23) edge(7,18) edge(19,21) edge(23,24) edge(14,23) edge(14,18) edge(15,18) edge(4,6) edge(4,9) node(1) node(4) node(23) node(5) node(19) node(14) node(21) node(18) node(6) node(7) node(15) node(13) node(9) node(11) node(24) node(25)
+Optimization: 24516980
+Answer: 8
+edge(6,13) edge(6,15) edge(5,6) edge(5,7) edge(1,6) edge(13,23) edge(23,25) edge(9,13) edge(11,21) edge(11,24) edge(14,18) edge(15,18) edge(15,19) edge(15,21) edge(4,15) node(1) node(4) node(23) node(5) node(19) node(14) node(21) node(18) node(6) node(7) node(15) node(13) node(9) node(11) node(24) node(25)
+Optimization: 24400669
+Answer: 9
+edge(6,13) edge(6,15) edge(5,6) edge(5,7) edge(1,6) edge(13,23) edge(23,25) edge(9,13) edge(11,21) edge(11,24) edge(14,18) edge(15,19) edge(15,21) edge(4,15) edge(4,18) node(1) node(4) node(23) node(5) node(19) node(14) node(21) node(18) node(6) node(7) node(15) node(13) node(9) node(11) node(24) node(25)
+Optimization: 24393459
+Answer: 10
+edge(6,13) edge(6,15) edge(5,6) edge(5,7) edge(1,6) edge(13,23) edge(23,25) edge(9,14) edge(11,21) edge(11,24) edge(14,18) edge(15,19) edge(15,21) edge(4,15) edge(4,18) node(1) node(4) node(23) node(5) node(19) node(14) node(21) node(18) node(6) node(7) node(15) node(13) node(9) node(11) node(24) node(25)
+Optimization: 24390169
+Answer: 11
+edge(6,7) edge(6,13) edge(5,6) edge(5,19) edge(1,13) edge(1,23) edge(1,9) edge(13,24) edge(23,25) edge(9,14) edge(9,21) edge(11,25) edge(15,18) edge(15,25) edge(4,18) node(1) node(4) node(23) node(5) node(19) node(14) node(21) node(18) node(6) node(7) node(15) node(13) node(9) node(11) node(24) node(25)
+Optimization: 24354839
+Answer: 12
+edge(6,7) edge(6,13) edge(5,6) edge(5,19) edge(1,13) edge(1,23) edge(1,9) edge(23,25) edge(23,24) edge(9,14) edge(9,21) edge(11,25) edge(15,18) edge(15,25) edge(4,18) node(1) node(4) node(23) node(5) node(19) node(14) node(21) node(18) node(6) node(7) node(15) node(13) node(9) node(11) node(24) node(25)
+Optimization: 24336279
+Answer: 13
+edge(6,7) edge(6,15) edge(5,6) edge(1,6) edge(1,5) edge(1,7) edge(1,13) edge(7,13) edge(13,25) edge(13,23) edge(19,21) edge(9,11) edge(11,21) edge(11,15) edge(11,24) edge(14,15) edge(15,18) edge(15,19) edge(15,21) edge(4,15) edge(4,18) node(1) node(4) node(23) node(5) node(19) node(14) node(21) node(18) node(6) node(7) node(15) node(13) node(9) node(11) node(24) node(25)
+Optimization: 24294310
+Answer: 14
+edge(6,7) edge(6,15) edge(5,6) edge(1,6) edge(1,5) edge(1,7) edge(1,13) edge(7,13) edge(13,25) edge(13,23) edge(19,21) edge(9,14) edge(9,11) edge(11,21) edge(11,15) edge(11,24) edge(15,18) edge(15,19) edge(15,21) edge(15,24) edge(4,15) edge(4,18) node(1) node(4) node(23) node(5) node(19) node(14) node(21) node(18) node(6) node(7) node(15) node(13) node(9) node(11) node(24) node(25)
+Optimization: 24280470
+Answer: 15
+edge(6,7) edge(6,15) edge(5,6) edge(1,6) edge(1,5) edge(1,7) edge(1,13) edge(7,13) edge(13,25) edge(13,23) edge(19,21) edge(23,24) edge(9,14) edge(9,11) edge(11,21) edge(11,15) edge(15,18) edge(15,19) edge(15,21) edge(4,15) edge(4,18) node(1) node(4) node(23) node(5) node(19) node(14) node(21) node(18) node(6) node(7) node(15) node(13) node(9) node(11) node(24) node(25)
+Optimization: 24260470
+Answer: 16
+edge(6,13) edge(6,23) edge(6,11) edge(6,25) edge(5,6) edge(1,6) edge(1,5) edge(1,13) edge(7,15) edge(7,18) edge(7,19) edge(7,21) edge(13,23) edge(23,24) edge(9,21) edge(9,11) edge(9,25) edge(11,25) edge(11,21) edge(11,15) edge(14,19) edge(14,18) edge(15,18) edge(15,19) edge(15,21) edge(4,18) edge(18,19) node(1) node(4) node(23) node(5) node(19) node(14) node(21) node(18) node(6) node(7) node(15) node(13) node(9) node(11) node(24) node(25)
+Optimization: 24257389
+Answer: 17
+edge(6,13) edge(6,23) edge(6,11) edge(6,25) edge(5,6) edge(1,6) edge(1,5) edge(1,13) edge(1,9) edge(7,15) edge(7,18) edge(7,19) edge(7,21) edge(13,23) edge(23,24) edge(11,25) edge(11,21) edge(11,15) edge(14,19) edge(14,18) edge(15,18) edge(15,19) edge(15,21) edge(4,18) edge(18,19) node(1) node(4) node(23) node(5) node(19) node(14) node(21) node(18) node(6) node(7) node(15) node(13) node(9) node(11) node(24) node(25)
+Optimization: 24249089
+Answer: 18
+edge(6,7) edge(6,13) edge(6,23) edge(5,7) edge(1,6) edge(1,5) edge(1,7) edge(1,13) edge(1,9) edge(7,15) edge(7,18) edge(7,19) edge(7,21) edge(13,25) edge(13,23) edge(23,25) edge(23,24) edge(11,21) edge(11,15) edge(14,19) edge(14,18) edge(15,18) edge(15,19) edge(15,21) edge(4,18) edge(18,19) node(1) node(4) node(23) node(5) node(19) node(14) node(21) node(18) node(6) node(7) node(15) node(13) node(9) node(11) node(24) node(25)
+Optimization: 24224999
+Answer: 19
+edge(6,7) edge(6,13) edge(6,23) edge(5,6) edge(5,7) edge(1,6) edge(1,5) edge(1,13) edge(1,9) edge(7,15) edge(7,18) edge(7,19) edge(7,21) edge(13,25) edge(13,23) edge(23,25) edge(23,24) edge(11,21) edge(11,15) edge(14,19) edge(14,18) edge(15,18) edge(15,19) edge(15,21) edge(4,18) edge(18,19) node(1) node(4) node(23) node(5) node(19) node(14) node(21) node(18) node(6) node(7) node(15) node(13) node(9) node(11) node(24) node(25)
+Optimization: 24210299
+Answer: 20
+edge(6,7) edge(6,13) edge(6,15) edge(6,23) edge(5,6) edge(1,6) edge(1,5) edge(1,13) edge(1,9) edge(7,15) edge(7,18) edge(7,19) edge(7,21) edge(13,25) edge(13,23) edge(23,25) edge(23,24) edge(11,21) edge(11,15) edge(14,19) edge(14,18) edge(15,18) edge(15,19) edge(15,21) edge(4,18) edge(18,19) node(1) node(4) node(23) node(5) node(19) node(14) node(21) node(18) node(6) node(7) node(15) node(13) node(9) node(11) node(24) node(25)
+Optimization: 24208589
+Answer: 21
+edge(6,7) edge(6,13) edge(6,15) edge(6,23) edge(5,6) edge(5,7) edge(1,6) edge(1,5) edge(1,13) edge(1,9) edge(7,15) edge(7,18) edge(7,19) edge(7,21) edge(13,25) edge(13,23) edge(23,25) edge(23,24) edge(11,21) edge(11,15) edge(14,19) edge(14,18) edge(15,18) edge(15,19) edge(15,21) edge(4,18) edge(18,19) node(1) node(4) node(23) node(5) node(19) node(14) node(21) node(18) node(6) node(7) node(15) node(13) node(9) node(11) node(24) node(25)
+Optimization: 24204999
+Answer: 22
+edge(6,7) edge(6,13) edge(6,23) edge(5,6) edge(1,6) edge(1,5) edge(1,7) edge(1,13) edge(1,25) edge(1,11) edge(13,25) edge(13,23) edge(19,21) edge(23,24) edge(9,13) edge(11,25) edge(11,21) edge(11,15) edge(14,18) edge(15,18) edge(15,19) edge(15,21) edge(4,15) edge(4,18) node(1) node(4) node(23) node(5) node(19) node(14) node(21) node(18) node(6) node(7) node(15) node(13) node(9) node(11) node(24) node(25)
+Optimization: 24203060
+Answer: 23
+edge(6,7) edge(6,13) edge(6,23) edge(5,6) edge(1,6) edge(1,5) edge(1,7) edge(1,13) edge(1,25) edge(1,11) edge(13,25) edge(13,23) edge(19,21) edge(23,24) edge(9,14) edge(9,13) edge(11,25) edge(11,21) edge(11,15) edge(15,18) edge(15,19) edge(15,21) edge(4,15) edge(4,18) node(1) node(4) node(23) node(5) node(19) node(14) node(21) node(18) node(6) node(7) node(15) node(13) node(9) node(11) node(24) node(25)
+Optimization: 24202120
+Answer: 24
+edge(6,7) edge(6,13) edge(6,23) edge(5,6) edge(1,6) edge(1,5) edge(1,7) edge(1,13) edge(1,25) edge(1,9) edge(1,11) edge(13,23) edge(23,24) edge(11,25) edge(11,21) edge(11,15) edge(14,19) edge(14,18) edge(15,18) edge(15,19) edge(15,21) edge(4,18) edge(18,19) node(1) node(4) node(23) node(5) node(19) node(14) node(21) node(18) node(6) node(7) node(15) node(13) node(9) node(11) node(24) node(25)
+Optimization: 24196000
+Answer: 25
+edge(6,7) edge(6,13) edge(6,23) edge(5,6) edge(1,6) edge(1,5) edge(1,7) edge(1,13) edge(1,25) edge(1,9) edge(1,11) edge(7,25) edge(13,23) edge(23,24) edge(11,25) edge(11,21) edge(11,15) edge(14,19) edge(14,18) edge(15,18) edge(15,19) edge(15,21) edge(4,18) edge(18,19) node(1) node(4) node(23) node(5) node(19) node(14) node(21) node(18) node(6) node(7) node(15) node(13) node(9) node(11) node(24) node(25)
+Optimization: 24195800
+Answer: 26
+edge(6,7) edge(6,13) edge(6,23) edge(5,6) edge(1,6) edge(1,5) edge(1,7) edge(1,13) edge(1,25) edge(1,9) edge(1,11) edge(13,23) edge(23,24) edge(11,25) edge(11,21) edge(11,15) edge(14,19) edge(14,18) edge(15,18) edge(15,19) edge(15,21) edge(4,15) edge(4,18) edge(18,19) node(1) node(4) node(23) node(5) node(19) node(14) node(21) node(18) node(6) node(7) node(15) node(13) node(9) node(11) node(24) node(25)
+Optimization: 24191000
+Answer: 27
+edge(6,7) edge(6,13) edge(6,23) edge(5,6) edge(1,6) edge(1,5) edge(1,7) edge(1,13) edge(1,25) edge(1,9) edge(1,11) edge(7,25) edge(13,23) edge(23,24) edge(11,25) edge(11,21) edge(11,15) edge(14,19) edge(14,18) edge(15,18) edge(15,19) edge(15,21) edge(4,15) edge(4,18) edge(18,19) node(1) node(4) node(23) node(5) node(19) node(14) node(21) node(18) node(6) node(7) node(15) node(13) node(9) node(11) node(24) node(25)
+Optimization: 24190800
+Answer: 28
+edge(6,7) edge(6,13) edge(6,23) edge(5,6) edge(1,6) edge(1,5) edge(1,7) edge(1,13) edge(1,25) edge(1,9) edge(1,11) edge(7,18) edge(7,19) edge(13,25) edge(13,23) edge(19,21) edge(23,24) edge(11,25) edge(14,19) edge(14,18) edge(15,18) edge(15,19) edge(15,21) edge(4,18) edge(18,19) node(1) node(4) node(23) node(5) node(19) node(14) node(21) node(18) node(6) node(7) node(15) node(13) node(9) node(11) node(24) node(25)
+Optimization: 24189300
+Answer: 29
+edge(6,7) edge(6,13) edge(6,23) edge(5,6) edge(1,6) edge(1,5) edge(1,7) edge(1,13) edge(1,25) edge(1,9) edge(1,11) edge(7,15) edge(7,18) edge(7,19) edge(13,25) edge(13,23) edge(19,21) edge(23,24) edge(11,25) edge(14,19) edge(14,18) edge(15,18) edge(15,19) edge(15,21) edge(4,18) edge(18,19) node(1) node(4) node(23) node(5) node(19) node(14) node(21) node(18) node(6) node(7) node(15) node(13) node(9) node(11) node(24) node(25)
+Optimization: 24186299
+Answer: 30
+edge(6,7) edge(6,13) edge(6,23) edge(5,6) edge(1,6) edge(1,5) edge(1,7) edge(1,13) edge(1,25) edge(1,9) edge(1,11) edge(13,23) edge(19,21) edge(19,23) edge(23,24) edge(11,25) edge(14,23) edge(14,19) edge(14,18) edge(15,18) edge(15,19) edge(15,21) edge(4,15) edge(4,18) edge(18,19) node(1) node(4) node(23) node(5) node(19) node(14) node(21) node(18) node(6) node(7) node(15) node(13) node(9) node(11) node(24) node(25)
+Optimization: 24184400
+Answer: 31
+edge(6,7) edge(6,13) edge(6,23) edge(5,6) edge(1,6) edge(1,5) edge(1,7) edge(1,13) edge(1,25) edge(1,9) edge(1,11) edge(13,23) edge(13,19) edge(19,21) edge(19,23) edge(23,24) edge(11,25) edge(14,23) edge(14,19) edge(14,18) edge(15,18) edge(15,19) edge(15,21) edge(4,15) edge(4,18) edge(18,19) node(1) node(4) node(23) node(5) node(19) node(14) node(21) node(18) node(6) node(7) node(15) node(13) node(9) node(11) node(24) node(25)
+Optimization: 24184300
+Answer: 32
+edge(6,7) edge(6,13) edge(6,15) edge(6,23) edge(5,6) edge(5,7) edge(1,6) edge(1,5) edge(1,13) edge(1,25) edge(1,9) edge(1,11) edge(7,15) edge(13,25) edge(13,23) edge(19,21) edge(23,24) edge(11,25) edge(14,19) edge(14,18) edge(15,18) edge(15,19) edge(15,21) edge(4,15) edge(4,18) edge(18,19) node(1) node(4) node(23) node(5) node(19) node(14) node(21) node(18) node(6) node(7) node(15) node(13) node(9) node(11) node(24) node(25)
+Optimization: 24184000
+Answer: 33
+edge(6,7) edge(6,13) edge(6,15) edge(6,23) edge(6,19) edge(5,6) edge(5,7) edge(1,6) edge(1,5) edge(1,13) edge(1,25) edge(1,9) edge(1,11) edge(7,15) edge(13,25) edge(13,23) edge(19,21) edge(23,24) edge(11,25) edge(14,19) edge(14,18) edge(15,18) edge(15,19) edge(15,21) edge(4,15) edge(4,18) edge(18,19) node(1) node(4) node(23) node(5) node(19) node(14) node(21) node(18) node(6) node(7) node(15) node(13) node(9) node(11) node(24) node(25)
+Optimization: 24182400
+Answer: 34
+edge(6,7) edge(6,13) edge(6,23) edge(5,6) edge(1,6) edge(1,5) edge(1,7) edge(1,13) edge(1,25) edge(1,9) edge(1,11) edge(7,15) edge(7,18) edge(7,19) edge(13,25) edge(13,23) edge(19,21) edge(23,24) edge(11,25) edge(14,19) edge(14,18) edge(15,18) edge(15,19) edge(15,21) edge(4,15) edge(4,18) edge(18,19) node(1) node(4) node(23) node(5) node(19) node(14) node(21) node(18) node(6) node(7) node(15) node(13) node(9) node(11) node(24) node(25)
+Optimization: 24181299
+Answer: 35
+edge(6,7) edge(6,13) edge(6,15) edge(6,23) edge(5,6) edge(1,6) edge(1,5) edge(1,7) edge(1,13) edge(1,25) edge(1,9) edge(1,11) edge(7,15) edge(13,25) edge(13,23) edge(19,21) edge(23,24) edge(11,25) edge(14,19) edge(14,18) edge(15,18) edge(15,19) edge(15,21) edge(4,15) edge(4,18) edge(18,19) node(1) node(4) node(23) node(5) node(19) node(14) node(21) node(18) node(6) node(7) node(15) node(13) node(9) node(11) node(24) node(25)
+Optimization: 24180900
+Answer: 36
+edge(6,7) edge(6,13) edge(6,23) edge(5,6) edge(1,6) edge(1,5) edge(1,13) edge(1,25) edge(1,9) edge(1,11) edge(7,23) edge(7,15) edge(7,18) edge(7,19) edge(13,25) edge(13,23) edge(19,21) edge(19,23) edge(23,24) edge(11,25) edge(14,19) edge(14,18) edge(15,18) edge(15,19) edge(15,21) edge(4,18) edge(18,19) node(1) node(4) node(23) node(5) node(19) node(14) node(21) node(18) node(6) node(7) node(15) node(13) node(9) node(11) node(24) node(25)
+Optimization: 24179599
+Answer: 37
+edge(6,7) edge(6,13) edge(6,23) edge(5,6) edge(1,6) edge(1,5) edge(1,13) edge(1,25) edge(1,9) edge(1,11) edge(7,23) edge(7,15) edge(7,18) edge(7,19) edge(13,25) edge(13,23) edge(19,21) edge(19,23) edge(23,24) edge(11,25) edge(14,19) edge(14,18) edge(15,18) edge(15,19) edge(15,21) edge(4,15) edge(4,18) edge(18,19) node(1) node(4) node(23) node(5) node(19) node(14) node(21) node(18) node(6) node(7) node(15) node(13) node(9) node(11) node(24) node(25)
+Optimization: 24174599
+Answer: 38
+edge(6,7) edge(6,13) edge(6,23) edge(5,6) edge(1,6) edge(1,5) edge(1,13) edge(1,25) edge(1,9) edge(1,11) edge(7,23) edge(7,15) edge(7,18) edge(13,25) edge(13,23) edge(19,21) edge(19,23) edge(23,24) edge(9,14) edge(11,25) edge(15,18) edge(15,19) edge(15,23) edge(15,21) edge(4,15) edge(4,18) node(1) node(4) node(23) node(5) node(19) node(14) node(21) node(18) node(6) node(7) node(15) node(13) node(9) node(11) node(24) node(25)
+Optimization: 24174260
+Answer: 39
+edge(6,7) edge(6,13) edge(6,23) edge(5,6) edge(1,6) edge(1,5) edge(1,13) edge(1,25) edge(1,9) edge(1,11) edge(7,23) edge(7,15) edge(13,25) edge(13,23) edge(19,21) edge(19,23) edge(23,24) edge(11,25) edge(14,19) edge(14,18) edge(15,18) edge(15,19) edge(15,23) edge(15,21) edge(4,15) edge(4,18) edge(18,19) node(1) node(4) node(23) node(5) node(19) node(14) node(21) node(18) node(6) node(7) node(15) node(13) node(9) node(11) node(24) node(25)
+Optimization: 24173600
+OPTIMUM FOUND
+
+Models       : 39    
+  Optimum    : yes
+Optimization : 24173600
+Calls        : 1
+Time         : 51.444s (Solving: 50.89s 1st Model: 0.00s Unsat: 48.31s)
+CPU Time     : 51.400s

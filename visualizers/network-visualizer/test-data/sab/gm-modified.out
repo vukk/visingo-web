@@ -1,0 +1,128 @@
+clingo version 4.5.0
+Reading from GraphicalModels.asp ...
+Solving...
+Answer: 1
+edge(1,9) edge(1,24) edge(1,15) edge(1,14) edge(1,21) edge(4,6) node(6) node(5) node(1) node(7) node(13) node(19) node(23) node(25) node(9) node(11) node(14) node(15) node(21) node(24) node(4) node(18) node(2) node(3) node(8) node(10) node(12) node(16) node(17) node(20) node(22)
+Optimization: 24656509
+Answer: 2
+edge(1,9) edge(1,15) edge(1,14) edge(1,21) edge(23,24) edge(4,6) node(6) node(5) node(1) node(7) node(13) node(19) node(23) node(25) node(9) node(11) node(14) node(15) node(21) node(24) node(4) node(18) node(2) node(3) node(8) node(10) node(12) node(16) node(17) node(20) node(22)
+Optimization: 24629709
+Answer: 3
+edge(1,9) edge(1,15) edge(1,14) edge(23,24) edge(4,6) node(6) node(5) node(1) node(7) node(13) node(19) node(23) node(25) node(9) node(11) node(14) node(15) node(21) node(24) node(4) node(18) node(2) node(3) node(8) node(10) node(12) node(16) node(17) node(20) node(22)
+Optimization: 24629509
+Answer: 4
+edge(5,7) edge(5,11) edge(1,5) edge(1,9) edge(19,23) edge(23,24) edge(14,19) edge(21,25) edge(4,6) edge(4,13) edge(4,9) edge(18,21) node(6) node(5) node(1) node(7) node(13) node(19) node(23) node(25) node(9) node(11) node(14) node(15) node(21) node(24) node(4) node(18) node(2) node(3) node(8) node(10) node(12) node(16) node(17) node(20) node(22)
+Optimization: 24564480
+Answer: 5
+edge(6,24) edge(5,7) edge(5,11) edge(1,5) edge(1,9) edge(19,23) edge(23,24) edge(14,19) edge(21,25) edge(4,13) edge(4,9) edge(18,21) node(6) node(5) node(1) node(7) node(13) node(19) node(23) node(25) node(9) node(11) node(14) node(15) node(21) node(24) node(4) node(18) node(2) node(3) node(8) node(10) node(12) node(16) node(17) node(20) node(22)
+Optimization: 24563780
+Answer: 6
+edge(6,25) edge(5,6) edge(5,13) edge(5,11) edge(1,5) edge(1,23) edge(7,18) edge(19,21) edge(23,24) edge(14,19) edge(14,18) edge(15,18) edge(4,6) edge(4,9) node(6) node(5) node(1) node(7) node(13) node(19) node(23) node(25) node(9) node(11) node(14) node(15) node(21) node(24) node(4) node(18) node(2) node(3) node(8) node(10) node(12) node(16) node(17) node(20) node(22)
+Optimization: 24519260
+Answer: 7
+edge(6,25) edge(5,6) edge(5,13) edge(5,11) edge(1,5) edge(1,23) edge(7,18) edge(19,21) edge(23,24) edge(14,23) edge(14,18) edge(15,18) edge(4,6) edge(4,9) node(6) node(5) node(1) node(7) node(13) node(19) node(23) node(25) node(9) node(11) node(14) node(15) node(21) node(24) node(4) node(18) node(2) node(3) node(8) node(10) node(12) node(16) node(17) node(20) node(22)
+Optimization: 24516980
+Answer: 8
+edge(6,13) edge(6,15) edge(5,6) edge(5,7) edge(1,6) edge(13,23) edge(23,25) edge(9,13) edge(11,21) edge(11,24) edge(14,18) edge(15,18) edge(15,19) edge(15,21) edge(4,15) node(6) node(5) node(1) node(7) node(13) node(19) node(23) node(25) node(9) node(11) node(14) node(15) node(21) node(24) node(4) node(18) node(2) node(3) node(8) node(10) node(12) node(16) node(17) node(20) node(22)
+Optimization: 24400669
+Answer: 9
+edge(6,13) edge(6,15) edge(5,6) edge(5,7) edge(1,6) edge(13,23) edge(23,25) edge(9,13) edge(11,21) edge(11,24) edge(14,18) edge(15,19) edge(15,21) edge(4,15) edge(4,18) node(6) node(5) node(1) node(7) node(13) node(19) node(23) node(25) node(9) node(11) node(14) node(15) node(21) node(24) node(4) node(18) node(2) node(3) node(8) node(10) node(12) node(16) node(17) node(20) node(22)
+Optimization: 24393459
+Answer: 10
+edge(6,13) edge(6,15) edge(5,6) edge(5,7) edge(1,6) edge(13,23) edge(23,25) edge(9,14) edge(11,21) edge(11,24) edge(14,18) edge(15,19) edge(15,21) edge(4,15) edge(4,18) node(6) node(5) node(1) node(7) node(13) node(19) node(23) node(25) node(9) node(11) node(14) node(15) node(21) node(24) node(4) node(18) node(2) node(3) node(8) node(10) node(12) node(16) node(17) node(20) node(22)
+Optimization: 24390169
+Answer: 11
+edge(6,7) edge(6,13) edge(5,6) edge(5,19) edge(1,13) edge(1,23) edge(1,9) edge(13,24) edge(23,25) edge(9,14) edge(9,21) edge(11,25) edge(15,18) edge(15,25) edge(4,18) node(6) node(5) node(1) node(7) node(13) node(19) node(23) node(25) node(9) node(11) node(14) node(15) node(21) node(24) node(4) node(18) node(2) node(3) node(8) node(10) node(12) node(16) node(17) node(20) node(22)
+Optimization: 24354839
+Answer: 12
+edge(6,7) edge(6,13) edge(5,6) edge(5,19) edge(1,13) edge(1,23) edge(1,9) edge(23,25) edge(23,24) edge(9,14) edge(9,21) edge(11,25) edge(15,18) edge(15,25) edge(4,18) node(6) node(5) node(1) node(7) node(13) node(19) node(23) node(25) node(9) node(11) node(14) node(15) node(21) node(24) node(4) node(18) node(2) node(3) node(8) node(10) node(12) node(16) node(17) node(20) node(22)
+Optimization: 24336279
+Answer: 13
+edge(6,7) edge(6,15) edge(5,6) edge(1,6) edge(1,5) edge(1,7) edge(1,13) edge(7,13) edge(13,25) edge(13,23) edge(19,21) edge(9,11) edge(11,21) edge(11,15) edge(11,24) edge(14,15) edge(15,18) edge(15,19) edge(15,21) edge(4,15) edge(4,18) node(6) node(5) node(1) node(7) node(13) node(19) node(23) node(25) node(9) node(11) node(14) node(15) node(21) node(24) node(4) node(18) node(2) node(3) node(8) node(10) node(12) node(16) node(17) node(20) node(22)
+Optimization: 24294310
+Answer: 14
+edge(6,7) edge(6,15) edge(5,6) edge(1,6) edge(1,5) edge(1,7) edge(1,13) edge(7,13) edge(13,25) edge(13,23) edge(19,21) edge(9,14) edge(9,11) edge(11,21) edge(11,15) edge(11,24) edge(15,18) edge(15,19) edge(15,21) edge(15,24) edge(4,15) edge(4,18) node(6) node(5) node(1) node(7) node(13) node(19) node(23) node(25) node(9) node(11) node(14) node(15) node(21) node(24) node(4) node(18) node(2) node(3) node(8) node(10) node(12) node(16) node(17) node(20) node(22)
+Optimization: 24280470
+Answer: 15
+edge(6,7) edge(6,15) edge(5,6) edge(1,6) edge(1,5) edge(1,7) edge(1,13) edge(7,13) edge(13,25) edge(13,23) edge(19,21) edge(23,24) edge(9,14) edge(9,11) edge(11,21) edge(11,15) edge(15,18) edge(15,19) edge(15,21) edge(4,15) edge(4,18) node(6) node(5) node(1) node(7) node(13) node(19) node(23) node(25) node(9) node(11) node(14) node(15) node(21) node(24) node(4) node(18) node(2) node(3) node(8) node(10) node(12) node(16) node(17) node(20) node(22)
+Optimization: 24260470
+Answer: 16
+edge(6,13) edge(6,23) edge(6,11) edge(6,25) edge(5,6) edge(1,6) edge(1,5) edge(1,13) edge(7,15) edge(7,18) edge(7,19) edge(7,21) edge(13,23) edge(23,24) edge(9,21) edge(9,11) edge(9,25) edge(11,25) edge(11,21) edge(11,15) edge(14,19) edge(14,18) edge(15,18) edge(15,19) edge(15,21) edge(4,18) edge(18,19) node(6) node(5) node(1) node(7) node(13) node(19) node(23) node(25) node(9) node(11) node(14) node(15) node(21) node(24) node(4) node(18) node(2) node(3) node(8) node(10) node(12) node(16) node(17) node(20) node(22)
+Optimization: 24257389
+Answer: 17
+edge(6,13) edge(6,23) edge(6,11) edge(6,25) edge(5,6) edge(1,6) edge(1,5) edge(1,13) edge(1,9) edge(7,15) edge(7,18) edge(7,19) edge(7,21) edge(13,23) edge(23,24) edge(11,25) edge(11,21) edge(11,15) edge(14,19) edge(14,18) edge(15,18) edge(15,19) edge(15,21) edge(4,18) edge(18,19) node(6) node(5) node(1) node(7) node(13) node(19) node(23) node(25) node(9) node(11) node(14) node(15) node(21) node(24) node(4) node(18) node(2) node(3) node(8) node(10) node(12) node(16) node(17) node(20) node(22)
+Optimization: 24249089
+Answer: 18
+edge(6,7) edge(6,13) edge(6,23) edge(5,7) edge(1,6) edge(1,5) edge(1,7) edge(1,13) edge(1,9) edge(7,15) edge(7,18) edge(7,19) edge(7,21) edge(13,25) edge(13,23) edge(23,25) edge(23,24) edge(11,21) edge(11,15) edge(14,19) edge(14,18) edge(15,18) edge(15,19) edge(15,21) edge(4,18) edge(18,19) node(6) node(5) node(1) node(7) node(13) node(19) node(23) node(25) node(9) node(11) node(14) node(15) node(21) node(24) node(4) node(18) node(2) node(3) node(8) node(10) node(12) node(16) node(17) node(20) node(22)
+Optimization: 24224999
+Answer: 19
+edge(6,7) edge(6,13) edge(6,23) edge(5,6) edge(5,7) edge(1,6) edge(1,5) edge(1,13) edge(1,9) edge(7,15) edge(7,18) edge(7,19) edge(7,21) edge(13,25) edge(13,23) edge(23,25) edge(23,24) edge(11,21) edge(11,15) edge(14,19) edge(14,18) edge(15,18) edge(15,19) edge(15,21) edge(4,18) edge(18,19) node(6) node(5) node(1) node(7) node(13) node(19) node(23) node(25) node(9) node(11) node(14) node(15) node(21) node(24) node(4) node(18) node(2) node(3) node(8) node(10) node(12) node(16) node(17) node(20) node(22)
+Optimization: 24210299
+Answer: 20
+edge(6,7) edge(6,13) edge(6,15) edge(6,23) edge(5,6) edge(1,6) edge(1,5) edge(1,13) edge(1,9) edge(7,15) edge(7,18) edge(7,19) edge(7,21) edge(13,25) edge(13,23) edge(23,25) edge(23,24) edge(11,21) edge(11,15) edge(14,19) edge(14,18) edge(15,18) edge(15,19) edge(15,21) edge(4,18) edge(18,19) node(6) node(5) node(1) node(7) node(13) node(19) node(23) node(25) node(9) node(11) node(14) node(15) node(21) node(24) node(4) node(18) node(2) node(3) node(8) node(10) node(12) node(16) node(17) node(20) node(22)
+Optimization: 24208589
+Answer: 21
+edge(6,7) edge(6,13) edge(6,15) edge(6,23) edge(5,6) edge(5,7) edge(1,6) edge(1,5) edge(1,13) edge(1,9) edge(7,15) edge(7,18) edge(7,19) edge(7,21) edge(13,25) edge(13,23) edge(23,25) edge(23,24) edge(11,21) edge(11,15) edge(14,19) edge(14,18) edge(15,18) edge(15,19) edge(15,21) edge(4,18) edge(18,19) node(6) node(5) node(1) node(7) node(13) node(19) node(23) node(25) node(9) node(11) node(14) node(15) node(21) node(24) node(4) node(18) node(2) node(3) node(8) node(10) node(12) node(16) node(17) node(20) node(22)
+Optimization: 24204999
+Answer: 22
+edge(6,7) edge(6,13) edge(6,23) edge(5,6) edge(1,6) edge(1,5) edge(1,7) edge(1,13) edge(1,25) edge(1,11) edge(13,25) edge(13,23) edge(19,21) edge(23,24) edge(9,13) edge(11,25) edge(11,21) edge(11,15) edge(14,18) edge(15,18) edge(15,19) edge(15,21) edge(4,15) edge(4,18) node(6) node(5) node(1) node(7) node(13) node(19) node(23) node(25) node(9) node(11) node(14) node(15) node(21) node(24) node(4) node(18) node(2) node(3) node(8) node(10) node(12) node(16) node(17) node(20) node(22)
+Optimization: 24203060
+Answer: 23
+edge(6,7) edge(6,13) edge(6,23) edge(5,6) edge(1,6) edge(1,5) edge(1,7) edge(1,13) edge(1,25) edge(1,11) edge(13,25) edge(13,23) edge(19,21) edge(23,24) edge(9,14) edge(9,13) edge(11,25) edge(11,21) edge(11,15) edge(15,18) edge(15,19) edge(15,21) edge(4,15) edge(4,18) node(6) node(5) node(1) node(7) node(13) node(19) node(23) node(25) node(9) node(11) node(14) node(15) node(21) node(24) node(4) node(18) node(2) node(3) node(8) node(10) node(12) node(16) node(17) node(20) node(22)
+Optimization: 24202120
+Answer: 24
+edge(6,7) edge(6,13) edge(6,23) edge(5,6) edge(1,6) edge(1,5) edge(1,7) edge(1,13) edge(1,25) edge(1,9) edge(1,11) edge(13,23) edge(23,24) edge(11,25) edge(11,21) edge(11,15) edge(14,19) edge(14,18) edge(15,18) edge(15,19) edge(15,21) edge(4,18) edge(18,19) node(6) node(5) node(1) node(7) node(13) node(19) node(23) node(25) node(9) node(11) node(14) node(15) node(21) node(24) node(4) node(18) node(2) node(3) node(8) node(10) node(12) node(16) node(17) node(20) node(22)
+Optimization: 24196000
+Answer: 25
+edge(6,7) edge(6,13) edge(6,23) edge(5,6) edge(1,6) edge(1,5) edge(1,7) edge(1,13) edge(1,25) edge(1,9) edge(1,11) edge(7,25) edge(13,23) edge(23,24) edge(11,25) edge(11,21) edge(11,15) edge(14,19) edge(14,18) edge(15,18) edge(15,19) edge(15,21) edge(4,18) edge(18,19) node(6) node(5) node(1) node(7) node(13) node(19) node(23) node(25) node(9) node(11) node(14) node(15) node(21) node(24) node(4) node(18) node(2) node(3) node(8) node(10) node(12) node(16) node(17) node(20) node(22)
+Optimization: 24195800
+Answer: 26
+edge(6,7) edge(6,13) edge(6,23) edge(5,6) edge(1,6) edge(1,5) edge(1,7) edge(1,13) edge(1,25) edge(1,9) edge(1,11) edge(13,23) edge(23,24) edge(11,25) edge(11,21) edge(11,15) edge(14,19) edge(14,18) edge(15,18) edge(15,19) edge(15,21) edge(4,15) edge(4,18) edge(18,19) node(6) node(5) node(1) node(7) node(13) node(19) node(23) node(25) node(9) node(11) node(14) node(15) node(21) node(24) node(4) node(18) node(2) node(3) node(8) node(10) node(12) node(16) node(17) node(20) node(22)
+Optimization: 24191000
+Answer: 27
+edge(6,7) edge(6,13) edge(6,23) edge(5,6) edge(1,6) edge(1,5) edge(1,7) edge(1,13) edge(1,25) edge(1,9) edge(1,11) edge(7,25) edge(13,23) edge(23,24) edge(11,25) edge(11,21) edge(11,15) edge(14,19) edge(14,18) edge(15,18) edge(15,19) edge(15,21) edge(4,15) edge(4,18) edge(18,19) node(6) node(5) node(1) node(7) node(13) node(19) node(23) node(25) node(9) node(11) node(14) node(15) node(21) node(24) node(4) node(18) node(2) node(3) node(8) node(10) node(12) node(16) node(17) node(20) node(22)
+Optimization: 24190800
+Answer: 28
+edge(6,7) edge(6,13) edge(6,23) edge(5,6) edge(1,6) edge(1,5) edge(1,7) edge(1,13) edge(1,25) edge(1,9) edge(1,11) edge(7,18) edge(7,19) edge(13,25) edge(13,23) edge(19,21) edge(23,24) edge(11,25) edge(14,19) edge(14,18) edge(15,18) edge(15,19) edge(15,21) edge(4,18) edge(18,19) node(6) node(5) node(1) node(7) node(13) node(19) node(23) node(25) node(9) node(11) node(14) node(15) node(21) node(24) node(4) node(18) node(2) node(3) node(8) node(10) node(12) node(16) node(17) node(20) node(22)
+Optimization: 24189300
+Answer: 29
+edge(6,7) edge(6,13) edge(6,23) edge(5,6) edge(1,6) edge(1,5) edge(1,7) edge(1,13) edge(1,25) edge(1,9) edge(1,11) edge(7,15) edge(7,18) edge(7,19) edge(13,25) edge(13,23) edge(19,21) edge(23,24) edge(11,25) edge(14,19) edge(14,18) edge(15,18) edge(15,19) edge(15,21) edge(4,18) edge(18,19) node(6) node(5) node(1) node(7) node(13) node(19) node(23) node(25) node(9) node(11) node(14) node(15) node(21) node(24) node(4) node(18) node(2) node(3) node(8) node(10) node(12) node(16) node(17) node(20) node(22)
+Optimization: 24186299
+Answer: 30
+edge(6,7) edge(6,13) edge(6,23) edge(5,6) edge(1,6) edge(1,5) edge(1,7) edge(1,13) edge(1,25) edge(1,9) edge(1,11) edge(13,23) edge(19,21) edge(19,23) edge(23,24) edge(11,25) edge(14,23) edge(14,19) edge(14,18) edge(15,18) edge(15,19) edge(15,21) edge(4,15) edge(4,18) edge(18,19) node(6) node(5) node(1) node(7) node(13) node(19) node(23) node(25) node(9) node(11) node(14) node(15) node(21) node(24) node(4) node(18) node(2) node(3) node(8) node(10) node(12) node(16) node(17) node(20) node(22)
+Optimization: 24184400
+Answer: 31
+edge(6,7) edge(6,13) edge(6,23) edge(5,6) edge(1,6) edge(1,5) edge(1,7) edge(1,13) edge(1,25) edge(1,9) edge(1,11) edge(13,23) edge(13,19) edge(19,21) edge(19,23) edge(23,24) edge(11,25) edge(14,23) edge(14,19) edge(14,18) edge(15,18) edge(15,19) edge(15,21) edge(4,15) edge(4,18) edge(18,19) node(6) node(5) node(1) node(7) node(13) node(19) node(23) node(25) node(9) node(11) node(14) node(15) node(21) node(24) node(4) node(18) node(2) node(3) node(8) node(10) node(12) node(16) node(17) node(20) node(22)
+Optimization: 24184300
+Answer: 32
+edge(6,7) edge(6,13) edge(6,15) edge(6,23) edge(5,6) edge(5,7) edge(1,6) edge(1,5) edge(1,13) edge(1,25) edge(1,9) edge(1,11) edge(7,15) edge(13,25) edge(13,23) edge(19,21) edge(23,24) edge(11,25) edge(14,19) edge(14,18) edge(15,18) edge(15,19) edge(15,21) edge(4,15) edge(4,18) edge(18,19) node(6) node(5) node(1) node(7) node(13) node(19) node(23) node(25) node(9) node(11) node(14) node(15) node(21) node(24) node(4) node(18) node(2) node(3) node(8) node(10) node(12) node(16) node(17) node(20) node(22)
+Optimization: 24184000
+Answer: 33
+edge(6,7) edge(6,13) edge(6,15) edge(6,23) edge(6,19) edge(5,6) edge(5,7) edge(1,6) edge(1,5) edge(1,13) edge(1,25) edge(1,9) edge(1,11) edge(7,15) edge(13,25) edge(13,23) edge(19,21) edge(23,24) edge(11,25) edge(14,19) edge(14,18) edge(15,18) edge(15,19) edge(15,21) edge(4,15) edge(4,18) edge(18,19) node(6) node(5) node(1) node(7) node(13) node(19) node(23) node(25) node(9) node(11) node(14) node(15) node(21) node(24) node(4) node(18) node(2) node(3) node(8) node(10) node(12) node(16) node(17) node(20) node(22)
+Optimization: 24182400
+Answer: 34
+edge(6,7) edge(6,13) edge(6,23) edge(5,6) edge(1,6) edge(1,5) edge(1,7) edge(1,13) edge(1,25) edge(1,9) edge(1,11) edge(7,15) edge(7,18) edge(7,19) edge(13,25) edge(13,23) edge(19,21) edge(23,24) edge(11,25) edge(14,19) edge(14,18) edge(15,18) edge(15,19) edge(15,21) edge(4,15) edge(4,18) edge(18,19) node(6) node(5) node(1) node(7) node(13) node(19) node(23) node(25) node(9) node(11) node(14) node(15) node(21) node(24) node(4) node(18) node(2) node(3) node(8) node(10) node(12) node(16) node(17) node(20) node(22)
+Optimization: 24181299
+Answer: 35
+edge(6,7) edge(6,13) edge(6,15) edge(6,23) edge(5,6) edge(1,6) edge(1,5) edge(1,7) edge(1,13) edge(1,25) edge(1,9) edge(1,11) edge(7,15) edge(13,25) edge(13,23) edge(19,21) edge(23,24) edge(11,25) edge(14,19) edge(14,18) edge(15,18) edge(15,19) edge(15,21) edge(4,15) edge(4,18) edge(18,19) node(6) node(5) node(1) node(7) node(13) node(19) node(23) node(25) node(9) node(11) node(14) node(15) node(21) node(24) node(4) node(18) node(2) node(3) node(8) node(10) node(12) node(16) node(17) node(20) node(22)
+Optimization: 24180900
+Answer: 36
+edge(6,7) edge(6,13) edge(6,23) edge(5,6) edge(1,6) edge(1,5) edge(1,13) edge(1,25) edge(1,9) edge(1,11) edge(7,23) edge(7,15) edge(7,18) edge(7,19) edge(13,25) edge(13,23) edge(19,21) edge(19,23) edge(23,24) edge(11,25) edge(14,19) edge(14,18) edge(15,18) edge(15,19) edge(15,21) edge(4,18) edge(18,19) node(6) node(5) node(1) node(7) node(13) node(19) node(23) node(25) node(9) node(11) node(14) node(15) node(21) node(24) node(4) node(18) node(2) node(3) node(8) node(10) node(12) node(16) node(17) node(20) node(22)
+Optimization: 24179599
+Answer: 37
+edge(6,7) edge(6,13) edge(6,23) edge(5,6) edge(1,6) edge(1,5) edge(1,13) edge(1,25) edge(1,9) edge(1,11) edge(7,23) edge(7,15) edge(7,18) edge(7,19) edge(13,25) edge(13,23) edge(19,21) edge(19,23) edge(23,24) edge(11,25) edge(14,19) edge(14,18) edge(15,18) edge(15,19) edge(15,21) edge(4,15) edge(4,18) edge(18,19) node(6) node(5) node(1) node(7) node(13) node(19) node(23) node(25) node(9) node(11) node(14) node(15) node(21) node(24) node(4) node(18) node(2) node(3) node(8) node(10) node(12) node(16) node(17) node(20) node(22)
+Optimization: 24174599
+Answer: 38
+edge(6,7) edge(6,13) edge(6,23) edge(5,6) edge(1,6) edge(1,5) edge(1,13) edge(1,25) edge(1,9) edge(1,11) edge(7,23) edge(7,15) edge(7,18) edge(13,25) edge(13,23) edge(19,21) edge(19,23) edge(23,24) edge(9,14) edge(11,25) edge(15,18) edge(15,19) edge(15,23) edge(15,21) edge(4,15) edge(4,18) node(6) node(5) node(1) node(7) node(13) node(19) node(23) node(25) node(9) node(11) node(14) node(15) node(21) node(24) node(4) node(18) node(2) node(3) node(8) node(10) node(12) node(16) node(17) node(20) node(22)
+Optimization: 24174260
+Answer: 39
+edge(6,7) edge(6,13) edge(6,23) edge(5,6) edge(1,6) edge(1,5) edge(1,13) edge(1,25) edge(1,9) edge(1,11) edge(7,23) edge(7,15) edge(13,25) edge(13,23) edge(19,21) edge(19,23) edge(23,24) edge(11,25) edge(14,19) edge(14,18) edge(15,18) edge(15,19) edge(15,23) edge(15,21) edge(4,15) edge(4,18) edge(18,19) node(6) node(5) node(1) node(7) node(13) node(19) node(23) node(25) node(9) node(11) node(14) node(15) node(21) node(24) node(4) node(18) node(2) node(3) node(8) node(10) node(12) node(16) node(17) node(20) node(22)
+Optimization: 24173600
+OPTIMUM FOUND
+
+Models       : 39    
+  Optimum    : yes
+Optimization : 24173600
+Calls        : 1
+Time         : 51.444s (Solving: 50.89s 1st Model: 0.00s Unsat: 48.31s)
+CPU Time     : 51.400s
