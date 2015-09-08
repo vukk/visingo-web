@@ -4,10 +4,10 @@
 
 <!-- TODO merge settings-options into this file. -->
 
-<dom-module id="visualizer-test-vis-graph-settings">
+<dom-module id="visualizer-network-visualizer-settings">
   <template>
-  <visualizer-test-vis-graph-settings-options input="[[input]]" settings="{{_settings}}">
-  </visualizer-test-vis-graph-settings-options>
+  <visualizer-network-visualizer-settings-options input="[[input]]" settings="{{_settings}}">
+  </visualizer-network-visualizer-settings-options>
   <visingo-launch-button settings="[[_settings]]" input="[[input]]"></visingo-launch-button>
   </template>
 </dom-module>
@@ -15,7 +15,7 @@
 <script>
   (function () {
     Polymer({
-      is: 'visualizer-test-vis-graph-settings',
+      is: 'visualizer-network-visualizer-settings',
       properties: {
         input: { // has the attributes passed to visingo-visualizer-settings
           type: Object

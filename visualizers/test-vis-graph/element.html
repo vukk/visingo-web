@@ -29,7 +29,7 @@ div.vis-network-tooltip {
 }
 </style>
 
-<dom-module id="visualizer-test-vis-graph-element">
+<dom-module id="visualizer-network-visualizer-element">
   <template>
     <style type="text/css">
       :host {
@@ -58,7 +58,7 @@ div.vis-network-tooltip {
     var MIN_ZOOM_INTERVAL = 2000; // ms
 
     Polymer({
-      is: 'visualizer-test-vis-graph-element',
+      is: 'visualizer-network-visualizer-element',
 
       properties: {
         info: {
@@ -66,8 +66,8 @@ div.vis-network-tooltip {
           value: function() {
             return {
               "name": "Network visualizer",
-              "tag": "test-vis-graph",
-              "directory": "test-vis-graph",
+              "tag": "network-visualizer",
+              "directory": "network-visualizer",
               "bundleSaveSettings": {
                 "autoZoom": "_autoZoom",
                 "timerInterval": "_timerInterval"
@@ -210,7 +210,7 @@ div.vis-network-tooltip {
 
       attached: function() {
         var elem = document.createElement(
-          'visualizer-test-vis-graph-toolbar-controls'
+          'visualizer-network-visualizer-toolbar-controls'
         );
 
         elem.controls = {
