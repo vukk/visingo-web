@@ -195,19 +195,10 @@ div.vis-network-tooltip {
         this._timer.stop();
         this._timer.reset();
 
-        /* // skipping implementation
+        // skip to end
         var len = this._playbackState.data.length;
         var cur = this._playbackState.current;
-        // queue the rest of the sets
-        for(var i = cur; i < len-cur; i++) {
-          this._visScript.queueAnswerSet(
-              this._playbackState.data[i].Value
-          );
-        }
-        this.set('_playbackState.current', len); // set to "next" state, even if there is none
-        this._visScript.flushChanges();
-        */
-        while(this.playbackNext(true)) {};
+        this.playbackSkip(len - cur);
       },
 
       created: function() {
@@ -349,7 +340,7 @@ div.vis-network-tooltip {
 
       playbackTick: function() {
         // put first answer set to screen
-        if(this.playbackNext(false)) {
+        if(this.playbackNext()) {
           // then start a clock if there are more answer sets
           this._timer.reset();
           this._timer.start(this._timerInterval);
@@ -358,21 +349,36 @@ div.vis-network-tooltip {
 
       // displays the next answer set
       // returns boolean, whether there are more answer sets to display after this one
-      playbackNext: function(noFlash) {
-        // make sure there is a next answer set to display
+      playbackNext: function() {
+        return this.playbackSkip(1);
+      },
+
+      // skips <howMany> steps forward, howMany = 1 is the next step etc.
+      // returns boolean, whether there are more answer sets to display after this one
+      playbackSkip: function(howMany) {
+        // if we are at the end of playback, simply return
         if(this._playbackState.current >= this._playbackState.data.length)
           return false;
 
-        this._visScript.addAnswerSet(
-            this._playbackState.data[this._playbackState.current].Value
-        );
+        var end = this._playbackState.current + howMany;
+        // limit
+        end = (end > this._playbackState.data.length) ? this._playbackState.data.length : end;
+        var cur = this._playbackState.current;
+        console.log(end, cur, end-cur);
+        // queue the sets
+        for(var i = cur; i < end; i++) {
+          console.log('queue', i);
+          this._visScript.queueAnswerSet(
+              this._playbackState.data[i].Value
+          );
+        }
 
-        // increment answer set number
-        this.set('_playbackState.current', this._playbackState.current + 1);
+        this.set('_playbackState.current', end);
         console.log('new playbackState.current', this._playbackState.current);
+        this._visScript.flushChanges();
 
         // flash time display focus to visually indicate change
-        if(!noFlash && typeof this._toolbarControlsElement !== 'undefined') {
+        if(typeof this._toolbarControlsElement !== 'undefined') {
           this._toolbarControlsElement.$.timeToNextInputContainer._setFocused(true);
           this.async(function() {
             this._toolbarControlsElement.$.timeToNextInputContainer._setFocused(false);
