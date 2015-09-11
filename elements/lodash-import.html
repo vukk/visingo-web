@@ -27,23 +27,59 @@ _.mixin({
                 }
 
             });
-        
+
             // copy missing keys over
             var missing = _.difference(Object.keys(comp), Object.keys(old));
             _.each(missing, function(compKey) {
                 r[compKey] = comp[compKey];
             });
-        
+
             if(_.isEmpty(r)) return;
-            
+
             return r;
         }
-        
+
         var r = internalDeepDiff(old, comp);
-        
+
         if(typeof r === 'undefined')
             return {};
         return r;
+    },
+    // Return what would be overwritten in oldObj if was to be newObj was merged
+    // to it.
+    // Null marks that a portion was undefined in oldObj.
+    overwritten: function(newObj, oldObj) {
+        function internalOverwritten(newObj, oldObj) {
+            var r = {};
+            _.each(newObj, function(value, key) { // value, key
+                if(typeof oldObj[key] === 'undefined')
+                  return null;
+                if(oldObj[key] === value)
+                  return;
+
+                if((_.isObject(value) && _.isObject(oldObj[key]))) {
+                    var v = internalOverwritten(value, oldObj[key]);
+                    if(typeof v !== 'undefined')
+                        r[key] = v;
+                }
+                else {
+                    r[key] = oldObj[key];
+                }
+
+            });
+
+            // set missing keys to null
+            var missing = _.difference(Object.keys(newObj), Object.keys(oldObj));
+            _.each(missing, function(key) {
+                r[key] = null;
+            });
+
+            if(_.isEmpty(r)) return;
+
+            return r;
+        }
+
+        return internalOverwritten(newObj, oldObj);
     }
 });
 </script>

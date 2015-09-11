@@ -16,9 +16,13 @@ var testVisGraphVisualizer = (function (vis, _, parser) {
         canvas,
         entities,
         currentEntityKeys = {nodes: [], edges: []},
-        attributes;
+        attributes,
+        entityDeltas = {nodes: [], edges: []},
+        attributeDeltas = [],
+        cursor = 0;
 
     my.destroy = function() {
+        // more like a reset than a destroy
         if(network instanceof vis.Network) {
             network.destroy();
             context = undefined;
@@ -26,6 +30,9 @@ var testVisGraphVisualizer = (function (vis, _, parser) {
             entities = undefined;
             currentEntityKeys = {nodes: [], edges: []};
             attributes = undefined;
+            entityDeltas = {nodes: [], edges: []};
+            attributeDeltas = [];
+            cursor = 0;
         }
     }
 
@@ -36,7 +43,10 @@ var testVisGraphVisualizer = (function (vis, _, parser) {
         // entities are visjs network "data"
         entities = {
             nodes: new vis.DataSet([], {queue: true}),
-            edges: new vis.DataSet([], {queue: true})
+            edges: new vis.DataSet([], {queue: true}),
+            // hack, keep flushed duplicates. TODO FIX THIS, FastFwd problematic
+            fNodes: new vis.DataSet([], {queue: false}),
+            fEdges: new vis.DataSet([], {queue: false})
         };
 
         // attributes are visjs network "options"
@@ -81,6 +91,8 @@ var testVisGraphVisualizer = (function (vis, _, parser) {
         my.network = network; // TODO remove
         my.edges = entities.edges;
         my.nodes = entities.nodes;
+        my.entityDeltas = entityDeltas;
+        my.attributeDeltas = attributeDeltas;
 
         canvas    = container.firstChild.firstChild;
         context   = canvas.getContext('2d');
@@ -147,8 +159,17 @@ var testVisGraphVisualizer = (function (vis, _, parser) {
         var nodesToAdd = _.difference(Object.keys(parsed.nodes), currentEntityKeys.nodes);
         var edgesToAdd = _.difference(Object.keys(parsed.edges), currentEntityKeys.edges);
 
-        entities.edges.remove(edgesToRem);
-        entities.nodes.remove(nodesToRem);
+        entityDeltas.nodes[cursor] = {};
+        entityDeltas.edges[cursor] = {};
+
+        _.map(edgesToRem, function(key) {
+            entityDeltas.edges[cursor][key] = entities.fEdges.get(key);
+        });
+        _.map(nodesToRem, function(key) {
+            entityDeltas.nodes[cursor][key] = entities.fNodes.get(key);
+        });
+        entities.edges.remove(edgesToRem); entities.fEdges.remove(edgesToRem);
+        entities.nodes.remove(nodesToRem); entities.fNodes.remove(nodesToRem);
 
         // add
         _.map(nodesToAdd, function(key) {
@@ -157,9 +178,13 @@ var testVisGraphVisualizer = (function (vis, _, parser) {
                 parsed.nodes[key].label = String(parsed.nodes[key].id);
 
             entities.nodes.add(parsed.nodes[key]);
+            entities.fNodes.add(parsed.nodes[key]);
+            entityDeltas.nodes[cursor][key] = null;
         });
         _.map(edgesToAdd, function(key) {
             entities.edges.add(parsed.edges[key]);
+            entities.fEdges.add(parsed.edges[key]);
+            entityDeltas.edges[cursor][key] = null;
         });
 
         // entities that stay, (nodes & edges to update)
@@ -178,11 +203,25 @@ var testVisGraphVisualizer = (function (vis, _, parser) {
 
         _.map(nodesToUpd, function(key) {
             //console.log('nodeupdate', parsed.nodes[key]);
+            var ow = _.overwritten(
+              parsed.nodes[key],
+              entities.fNodes.get(key)
+            );
+            if(typeof ow !== 'undefined')
+              entityDeltas.nodes[cursor][key] = ow;
             entities.nodes.update(parsed.nodes[key]);
+            entities.fNodes.update(parsed.nodes[key]);
         });
         _.map(edgesToUpd, function(key) {
             //console.log('edgeupdate', parsed.edges[key]);
+            var ow = _.overwritten(
+              parsed.edges[key],
+              entities.fEdges.get(key)
+            );
+            if(typeof ow !== 'undefined')
+              entityDeltas.edges[cursor][key] = ow;
             entities.edges.update(parsed.edges[key]);
+            entities.fEdges.update(parsed.edges[key]);
         });
 
         // attributes
@@ -204,6 +243,7 @@ var testVisGraphVisualizer = (function (vis, _, parser) {
         // _.deepDiff(current, new) gives only what's different in new compared to current
         // _.deepDiff is defined as a mixin in lodash-import.html
         var attributeChanges = _.deepDiff(attributes, parsed);
+        attributeDeltas[cursor] = _.overwritten(attributeChanges, attributes);
 
 
         //console.log('current: ', attributes);
@@ -211,6 +251,51 @@ var testVisGraphVisualizer = (function (vis, _, parser) {
         // TODO: queue changes, execute upon my.flushChanges()
         network.setOptions(attributeChanges);
 
+        cursor += 1;
+        return true;
+    };
+
+    my.undo = function() {
+        if(cursor === 0) return false;
+        cursor -= 1;
+
+        var nodesToRem = Object.keys(_.pick(entityDeltas.nodes[cursor], _.isNull));
+        var edgesToRem = Object.keys(_.pick(entityDeltas.edges[cursor], _.isNull));
+        entities.edges.remove(edgesToRem);
+        entities.nodes.remove(nodesToRem);
+
+        var nodesToUpdObjs = _.pick(
+          entityDeltas.nodes[cursor],
+          function(x) { return !_.isNull(x) }
+        );
+        var edgesToUpdObjs = _.pick(
+          entityDeltas.edges[cursor],
+          function(x) { return !_.isNull(x) }
+        );
+
+        currentEntityKeys.nodes = _.union(
+          Object.keys(nodesToUpdObjs),
+          _.difference(currentEntityKeys.nodes, nodesToRem)
+        );
+        currentEntityKeys.edges = _.union(
+          Object.keys(edgesToUpdObjs),
+          _.difference(currentEntityKeys.edges, edgesToRem)
+        );
+
+        console.log('undoing update:', nodesToUpdObjs, edgesToUpdObjs);
+        _.forOwn(nodesToUpdObjs, function(value, key) {
+            value['id'] = key;
+            console.log('node', 'key', key, 'value', value);
+            entities.nodes.update(value);
+        });
+        _.forOwn(edgesToUpdObjs, function(value, key) {
+            value['id'] = key;
+            console.log('edge', 'key', key, 'value', value);
+            entities.edges.update(value);
+        });
+
+        network.setOptions(attributeDeltas[cursor]);
+        my.flushChanges();
         return true;
     };
 

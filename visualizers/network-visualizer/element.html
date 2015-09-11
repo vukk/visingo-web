@@ -176,8 +176,20 @@ div.vis-network-tooltip {
 
       _ctlPrevious: function() {
         console.log('controls: previous');
-        // TODO: implement
-        console.log('NOTE: "previous" not implemented');
+        if(this._playbackState.current === 0) return false;
+        if(this._timer.go) {
+          this._timer.stop();
+          this._timer.reset();
+          this._visScript.undo();
+          this.set('_playbackState.current', end);
+          this._timer.start(this._timerInterval);
+          return true;
+        }
+        else {
+          this._visScript.undo();
+          this.set('_playbackState.current', this._playbackState.current - 1);
+          return true;
+        }
       },
 
       _ctlToStart: function() {
