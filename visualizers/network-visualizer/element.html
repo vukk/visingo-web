@@ -181,7 +181,7 @@ div.vis-network-tooltip {
           this._timer.stop();
           this._timer.reset();
           this._visScript.undo();
-          this.set('_playbackState.current', end);
+          this.set('_playbackState.current', this._playbackState.current - 1);
           this._timer.start(this._timerInterval);
           return true;
         }
@@ -376,10 +376,9 @@ div.vis-network-tooltip {
         // limit
         end = (end > this._playbackState.data.length) ? this._playbackState.data.length : end;
         var cur = this._playbackState.current;
-        console.log(end, cur, end-cur);
+        console.log('Queueing answer sets from', cur, 'to', end);
         // queue the sets
         for(var i = cur; i < end; i++) {
-          console.log('queue', i);
           this._visScript.queueAnswerSet(
               this._playbackState.data[i].Value
           );

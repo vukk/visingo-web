@@ -261,8 +261,8 @@ var testVisGraphVisualizer = (function (vis, _, parser) {
 
         var nodesToRem = Object.keys(_.pick(entityDeltas.nodes[cursor], _.isNull));
         var edgesToRem = Object.keys(_.pick(entityDeltas.edges[cursor], _.isNull));
-        entities.edges.remove(edgesToRem);
-        entities.nodes.remove(nodesToRem);
+        entities.edges.remove(edgesToRem); entities.fEdges.remove(edgesToRem);
+        entities.nodes.remove(nodesToRem); entities.fNodes.remove(nodesToRem);
 
         var nodesToUpdObjs = _.pick(
           entityDeltas.nodes[cursor],
@@ -282,16 +282,15 @@ var testVisGraphVisualizer = (function (vis, _, parser) {
           _.difference(currentEntityKeys.edges, edgesToRem)
         );
 
-        console.log('undoing update:', nodesToUpdObjs, edgesToUpdObjs);
         _.forOwn(nodesToUpdObjs, function(value, key) {
             value['id'] = key;
-            console.log('node', 'key', key, 'value', value);
             entities.nodes.update(value);
+            entities.fNodes.update(value);
         });
         _.forOwn(edgesToUpdObjs, function(value, key) {
             value['id'] = key;
-            console.log('edge', 'key', key, 'value', value);
             entities.edges.update(value);
+            entities.fEdges.update(value);
         });
 
         network.setOptions(attributeDeltas[cursor]);
