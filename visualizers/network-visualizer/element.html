@@ -176,7 +176,7 @@ div.vis-network-tooltip {
 
       _ctlPrevious: function() {
         console.log('controls: previous');
-        if(this._playbackState.current === 0) return false;
+        if(this._playbackState.current <= 1) return false;
         if(this._timer.go) {
           this._timer.stop();
           this._timer.reset();
