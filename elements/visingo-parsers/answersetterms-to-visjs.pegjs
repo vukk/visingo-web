@@ -38,7 +38,7 @@
   }
 
   function setDeep(objParam, arr, value) {
-    obj = objParam;
+    var obj = objParam;
     for (var i = 0, n = arr.length-1; i < n; ++i) {
         var key = arr[i];
         // simpler
@@ -274,7 +274,7 @@ posinteger "positive integer"
   = digits:[0-9]+ { return makeInteger(digits); }
 
 integer "integer"
-  = sign:"-"? digits:([0-9]+) { d = makeInteger(digits); return (sign === '-') ? -d : d }
+  = sign:"-"? digits:([0-9]+) { var d = makeInteger(digits); return (sign === '-') ? -d : d }
 
 decimal "decimal"
   = "\"" sign:"-"? float:$(characteristic:[0-9]+ "." decimal:[0-9]+) "\""
